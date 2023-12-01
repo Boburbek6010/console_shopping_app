@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'package:console_shopping_app/Models/user.dart';
-import 'package:console_shopping_app/Services/user_network_service.dart';
+import 'package:console_shopping_app/Services/network_service.dart';
 
 class RegisterUser {
   List<User> users = [];

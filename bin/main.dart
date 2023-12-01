@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:console_shopping_app/Models/user.dart';
-import 'package:console_shopping_app/Registration/register_user.dart';
+import 'package:console_shopping_app/Services/register_user.dart';
 
 /// When run, it will be run firstly
 void main() {
