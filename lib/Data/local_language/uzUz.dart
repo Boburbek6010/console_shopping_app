@@ -31,5 +31,8 @@ const Map<String, String> uz = {
   "enter_phone":"Telefon raqamingizni kiriting: ",
   "successfully_registered":"Muvaffaqiyatli ro'yxatdan o'tdi!",
   "welcome":"Xush kelibsiz, ",
+  "Change_lang":"Til uzgartirish: ",
+  "Home_menu":"Bosh Menu",
+  "Exit":"3. Chiqish",
 
 };

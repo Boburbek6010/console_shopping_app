@@ -31,5 +31,8 @@ const Map<String, String> en = {
   "enter_phone":"Enter your phone number: ",
   "successfully_registered":"Successfully registered!",
   "welcome":"Welcome, ",
+  "Change_lang":"Change language: ",
+  "Home_menu":"Home Menu",
+  "Exit":"3. Exit",
 
 };

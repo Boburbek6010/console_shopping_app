@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:console_shopping_app/Services/extention_service.dart';
+
 List<User> userFromData(String data) =>
     List<User>.from(jsonDecode(data).map((e) => User.fromJson(e)));
 String userToData(User user) => jsonEncode(user.toJson());
@@ -43,7 +45,7 @@ class User {
   @override
   dynamic noSuchMethod(Invocation invocation) {
     if (invocation.isMethod && invocation.memberName == #myCustomMethod) {
-      return "Error";
+      return "error".tr;
     }
     return super.noSuchMethod(invocation);
   }

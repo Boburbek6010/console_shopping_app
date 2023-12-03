@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:http/http.dart';
 
 
@@ -19,7 +20,7 @@ class NetworkService {
     if(response.statusCode ==200 || response.statusCode ==201){
       return response.body;
     }else{
-      return "Something went wrong at ${response.statusCode}";
+      return "${"smth_went_wrong".tr} ${response.statusCode}";
     }
   }
 
@@ -27,9 +28,9 @@ class NetworkService {
     Uri url = Uri.https(baseUrl, api);
     Response response = await post(url, body: jsonEncode(body), headers: headers);
     if(response.statusCode ==200 || response.statusCode ==201){
-      return "Successfully posted: ${response.body}";
+      return "${"successfully_posted".tr} ${response.body}";
     }else{
-      return "Something went wrong at ${response.statusCode}";
+      return "${"smth_went_wrong".tr} ${response.statusCode}";
     }
   }
 
@@ -39,7 +40,7 @@ class NetworkService {
     if(response.statusCode ==200 || response.statusCode ==201){
       return "${response.statusCode}";
     }else{
-      return "Something went wrong at ${response.statusCode}";
+      return "${"smth_went_wrong".tr} ${response.statusCode}";
     }
   }
 }

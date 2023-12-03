@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:console_shopping_app/Services/extention_service.dart';
+
 import '../models/user.dart';
 import 'network_service.dart';
 
@@ -10,60 +12,54 @@ class RegisterUser {
   void signUp() async {
     String email;
     do {
-      stdout.write("Enter your email: ");
+      stdout.write("email_enter".tr);
       email = stdin.readLineSync() ?? "";
 
       if (!isValidEmail(email)) {
-        print("Invalid email format. Please enter a valid email address.");
+        print("email_invalid".tr);
       } else if (users.any((user) => user.email == email)) {
-        print("Email is already registered. Please use a different email.");
+        print("already_have_email".tr);
       }
     } while (!isValidEmail(email) || users.any((user) => user.email == email));
 
     String password;
     do {
-      print("""
-      Password requirements:
-      - Have more than 8 characters.
-      - Contains a capital letter.
-      - Contains a lowercase letter.
-      - Contains a number.
-    """);
-      stdout.write("Enter your password: ");
+      print("check_password".tr);
+      stdout.write("enter_password".tr);
       password = stdin.readLineSync() ?? "";
 
       if (!isValidPassword(password)) {
-        print("Invalid password format. Please make sure it meets the requirements.");
+        print("password_invalid".tr);
       }
     } while (!isValidPassword(password));
 
     String name;
     do {
-      stdout.write("Enter your name: ");
+      stdout.write("enter_name".tr);
       name = stdin.readLineSync() ?? "";
 
       if (!isValidName(name)) {
-        print("Invalid name format. Please enter a valid name.");
+        print("invalid_name".tr);
       }
     } while (!isValidName(name));
 
-    stdout.write("Enter your surname: ");
+    stdout.write("enter_surname".tr);
     String surname = stdin.readLineSync() ?? "";
 
     int age;
     do {
-      stdout.write("Enter your age: ");
+      stdout.write("enter_age".tr);
       String ageInput = stdin.readLineSync() ?? "";
       age = int.tryParse(ageInput) ?? 0;
 
       if (age <= 0) {
-        print("Invalid age. Please enter a valid age.");
+        print("invalid_age".tr);
       }
     } while (age <= 0);
 
-    stdout.write("Enter your phone number: ");
+    stdout.write("enter_phone".tr);
     String phoneNumber = stdin.readLineSync() ?? "";
-    print("Successfully registered!");
+    print("successfully_registered".tr);
 
     User user = User(email, password, name, surname, age, phoneNumber);
     await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
@@ -100,16 +96,16 @@ class RegisterUser {
 
   /// When old user use our shop app. The one have to enter with sign in.
   void signIn() {
-    stdout.write("Enter your email: ");
+    stdout.write("email_enter".tr);
     String email = stdin.readLineSync() ?? "";
 
-    stdout.write("Enter your password: ");
+    stdout.write("enter_password".tr);
     String password = stdin.readLineSync() ?? "";
 
 
     User user = users.firstWhere((user) => user.email == email && user.password == password);
 
-    print("Welcome, ${user.name}!");
+    print("${"welcome".tr}, ${user.name}!");
 
   }
 

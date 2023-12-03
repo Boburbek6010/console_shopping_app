@@ -31,5 +31,8 @@ const Map<String, String> ru = {
   "enter_phone":"Введите свой номер телефона: ",
   "successfully_registered":"Успешно зарегистрировано!",
   "welcome":"Добро пожаловать, ",
+  "Change_lang":"Изменить язык: ",
+  "Home_menu":"Главное меню",
+  "Exit":"3. Выход",
 
 };
