@@ -1,8 +1,8 @@
 const Map<String, String> uz = {
   "home_menu":"Bosh Menu",
-  "sign_up":"1. Registratsiya",
-  "sign_in":"2. Kirish",
-  "exit":"3. Chiqish",
+  "sign_up":"Registratsiya",
+  "sign_in":"Kirish",
+  "exit":"Chiqish",
   "language_choice":"Tanlovingizni kiriting: ",
   "exit_text":"Ilovamizdan foydalanganingiz uchun rahmat...",
   "invalid_value_text":"Not`og'ri tanlov. Iltimos yana bir marta urunib kuring.",
@@ -30,9 +30,9 @@ const Map<String, String> uz = {
   "invalid_age":"Noto'g'ri yosh. Yaroqli yoshni kiriting",
   "enter_phone":"Telefon raqamingizni kiriting: ",
   "successfully_registered":"Muvaffaqiyatli ro'yxatdan o'tdi!",
-  "welcome":"Xush kelibsiz, ",
+  "welcome":"Xush kelibsiz ",
   "Change_lang":"Til uzgartirish: ",
   "Home_menu":"Bosh Menu",
-  "Exit":"3. Chiqish",
+  "Exit":"Chiqish",
 
 };
