@@ -8,8 +8,7 @@ class Admin{
   late String login;
   late String password;
 
-  Admin(this.login, this.password );
-
+Admin({required this.password, required this.login});
   Admin.fromJson(Map<String, dynamic>json){
     login = json["login"];
     password = json["password"];

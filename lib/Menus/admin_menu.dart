@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/main_menu.dart';
+import 'package:console_shopping_app/Services/register_admin.dart';
 // import 'package:console_shopping_app/Menus/user_menu.dart';
 // import 'package:console_shopping_app/Services/navigation_service.dart';
 // import 'package:console_shopping_app/Services/register_user.dart';
@@ -10,17 +11,17 @@ class AdminMenu extends Menu{
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
-        // RegisterUser registerUser = RegisterUser();
-        // registerUser.signUp();
+         RegisterAdmin registerAdmin = RegisterAdmin();
+         registerAdmin.signUp();
       }
       break;
       case "2":{
-        // RegisterUser registerUser = RegisterUser();
-        // registerUser.signIn();
+         RegisterAdmin registerAdminn = RegisterAdmin();
+         registerAdminn.signIn();
       }
       break;
       case "3":{
-        print("Thank you for using our app...");
+        print("\t\t Thank you for using our app...");
         exit(0);
       }
       default: build();
@@ -30,9 +31,9 @@ class AdminMenu extends Menu{
 
   @override
   Future<void> build()async{
-    print("1. Sign up");
-    print("2. Sign in");
-    print("3. Exit");
+    print("\t\t 1. Sign up");
+    print("\t\t 2. Sign in");
+    print("\t\t 3. Exit");
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);
