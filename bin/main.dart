@@ -21,8 +21,6 @@ Future<void> main() async {
 
     LanguageService.switchLanguage(lang);
 
-
-
     MyApp(
       home: HomeMenu(),
       lang: Language.uz,
