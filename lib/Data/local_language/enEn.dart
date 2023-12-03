@@ -33,6 +33,6 @@ const Map<String, String> en = {
   "welcome":"Welcome ",
   "Change_lang":"Change language: ",
   "Home_menu":"Home Menu",
-  "Exit":"3. Exit",
+  "Exit":"Exit",
 
 };
