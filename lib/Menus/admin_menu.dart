@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/main_menu.dart';
-// import 'package:console_shopping_app/Menus/user_menu.dart';
-// import 'package:console_shopping_app/Services/navigation_service.dart';
-// import 'package:console_shopping_app/Services/register_user.dart';
+
+import '../Services/register_admin.dart';
+
 
 class AdminMenu extends Menu{
   static const id = "/user_menu";
@@ -10,13 +10,13 @@ class AdminMenu extends Menu{
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
-        // RegisterUser registerUser = RegisterUser();
-        // registerUser.signUp();
+        RegisterAdmin registerAdmin = RegisterAdmin();
+         registerAdmin.signUp();
       }
       break;
       case "2":{
-        // RegisterUser registerUser = RegisterUser();
-        // registerUser.signIn();
+        RegisterAdmin registerAdmin = RegisterAdmin();
+        registerAdmin.signIn();
       }
       break;
       case "3":{
