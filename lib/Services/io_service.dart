@@ -35,5 +35,4 @@ class IOService{
     print('\x1b[34m $value\x1b[0m');
   }
 
-
 }

@@ -11,11 +11,13 @@ Future<void> main() async {
 
   {
 
-    print("welcome".tr);
+    print("\t\t\t ${"  Xush kelibsiz"}".tr);
+    print("\t\t\t ${"Добро пожаловать"}".tr);
+    print("\t\t\t ${"    Welcome"}".tr);
 
-    print("1. UZ");
-    print("2. RU");
-    print("3. EN");
+    print("\t\t 1. UZ");
+    print("\t\t 2. RU");
+    print("\t\t 3. EN");
 
     String lang = stdin.readLineSync()!;
 

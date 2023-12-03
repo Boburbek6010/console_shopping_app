@@ -31,11 +31,11 @@ class HomeMenu extends Menu{
 
   @override
   Future<void> build()async{
-    print("welcome".tr);
-    print("1. ${"admin".tr}");
-    print("2. ${"user".tr}");
-    print("3. ${"setting".tr}");
-    print("4. ${"exit".tr}");
+    print("\t\t\t ${"welcome"}".tr);
+    print("\t\t 1. ${"admin".tr}");
+    print("\t\t 2. ${"user".tr}");
+    print("\t\t 3. ${"setting".tr}");
+    print("\t\t 4. ${"exit".tr}");
 
     String press = stdin.readLineSync() ?? "";
 

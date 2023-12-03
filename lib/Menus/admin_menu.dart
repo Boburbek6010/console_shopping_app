@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/main_menu.dart';
-import 'package:console_shopping_app/Services/extention_service.dart';
 // import 'package:console_shopping_app/Menus/user_menu.dart';
 // import 'package:console_shopping_app/Services/navigation_service.dart';
 // import 'package:console_shopping_app/Services/register_user.dart';
@@ -21,7 +20,7 @@ class AdminMenu extends Menu{
       }
       break;
       case "3":{
-        print("exit_text".tr);
+        print("Thank you for using our app...");
         exit(0);
       }
       default: build();
@@ -31,9 +30,9 @@ class AdminMenu extends Menu{
 
   @override
   Future<void> build()async{
-    print("sign_up".tr);
-    print("sign_in".tr);
-    print("exit".tr);
+    print("1. Sign up");
+    print("2. Sign in");
+    print("3. Exit");
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);
