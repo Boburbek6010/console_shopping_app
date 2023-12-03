@@ -1,12 +1,16 @@
 const Map<String, String> uz = {
+  "welcome":"Ilovamizga xush kelibsiz",
+  "setting":"Sozlash menyusi",
+  "exit":"Chiqish",
+  "admin" : "Administrator",
+  "user" : "Foydalanuvchi",
   "home_menu":"Bosh Menu",
-  "sign_up":"1. Registratsiya",
+  "Change_lang" : "Tilni o'zgartirish",
+  "sign_up":"1. Ro'yxatdan o'tish",
   "sign_in":"2. Kirish",
-  "exit":"3. Chiqish",
-  "language_choice":"Tanlovingizni kiriting: ",
+  "language_choice":"Tanlovingizni kiriting",
   "exit_text":"Ilovamizdan foydalanganingiz uchun rahmat...",
   "invalid_value_text":"Not`og'ri tanlov. Iltimos yana bir marta urunib kuring.",
-  "email_enter":"Email kiriting: ",
+  "email_enter":"Email kiriting",
   "email_invalid":"Elektron pochta formati noto‘g‘ri. Iltimos, to'g'ri e-pochta manzilini kiriting.",
-
 };
