@@ -2,22 +2,27 @@ import 'dart:io';
 import 'package:console_shopping_app/Menus/home_menu.dart';
 import 'package:console_shopping_app/Menus/setting_menu.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
+import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/language_service.dart';
 import 'package:console_shopping_app/my_app.dart';
 
 
 
 Future<void> main() async {
-
+  IOService ioService = IOService();
   {
 
-    print("\t\t\t ${"  Xush kelibsiz"}".tr);
-    print("\t\t\t ${"Добро пожаловать"}".tr);
-    print("\t\t\t ${"    Welcome"}".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Xush kelibsiz  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Добро пожаловать  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Welcome         \t\t\t\x1b[0m".tr);
 
-    print("\t\t 1. UZ");
-    print("\t\t 2. RU");
-    print("\t\t 3. EN");
+      print(" ");
+    ioService.pBorder("\x1b[32m \t\t\t 1. UZ  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t 2. RU  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t 3. EN  \t\t\t\x1b[0m".tr);
+
+
+
 
     String lang = stdin.readLineSync()!;
 
