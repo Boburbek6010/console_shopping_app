@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/setting_menu.dart';
+import 'package:console_shopping_app/Services/extention_service.dart';
+import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
 
 import '../Models/admin.dart';
@@ -7,7 +9,7 @@ import '../Services/register_admin.dart';
 import 'main_menu.dart';
 
 class AdminSystem extends Menu{
-
+  IOService ioService = IOService();
   static const id = "/product_menu";
   List<Map<String, dynamic>> productList = [];
 
@@ -65,18 +67,19 @@ class AdminSystem extends Menu{
 
   @override
   Future<void> build()async{
-    print("---------------------------------");
-    print("1. Adminlarni ko'rib chiqish\n");
-    print("2. Adminni o'chirish\n");
-    print("3. Adminni qo'shish\n");
-    print("4. Userlarni ko'rib chiqish\n");
-    print("5. Userni o'chirish\n");
-    print("6. Userni qo'shish\n");
-    print("7. Haxsulotni ko'rib chiqish\n");
-    print("8. maxsulotni o'chirish\n");
-    print("9. maxsulotni qo'shish\n");
-    print("10. Sozlamalar\n");
-
+    print("");
+    ioService.pBorder("\x1b[32m\t ---------------------------- \t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. Adminlarni ko'rib chiqish \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 2. Adminni o'chirish         \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 3. Adminni qo'shish          \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 4. Userlarni ko'rib chiqish  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 5. Userni o'chirish          \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 6. Userni qo'shish           \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 7. Haxsulotni ko'rib chiqish \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 8. Maxsulotni o'chirish      \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 9. Mahsulot qo'shish         \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 10. Sozlamalar               \t\t\t\x1b[0m\n".tr);
+    IOService.write("\x1b[32m       Tanlang =>              \t\t\t\x1b[0m".tr);
 
     String press = stdin.readLineSync() ?? "";
 
@@ -86,9 +89,11 @@ class AdminSystem extends Menu{
   }
 
   void printAllAdminsIndexed() {
-    print("Registered Admins:");
+    print("");
+    ioService.pBorder("\x1b[32m Registered Admins :              \t\t\t\x1b[0m\n".tr);
     RegisterAdmin.admins.asMap().forEach((index, admin) {
-      print("Admin index ${index + 1} => Email: ${admin.login}, Password: ${admin.password}");
+      print("");
+      ioService.pBorder("\x1b[32m Admin index ${index + 1} => Email: ${admin.login}, Password: ${admin.password}\x1b[0m\n".tr);
     });
   }
 
