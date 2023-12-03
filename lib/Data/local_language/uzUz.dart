@@ -1,16 +1,35 @@
 const Map<String, String> uz = {
-  "welcome":"Ilovamizga xush kelibsiz",
-  "setting":"Sozlash menyusi",
-  "exit":"Chiqish",
-  "admin" : "Administrator",
-  "user" : "Foydalanuvchi",
   "home_menu":"Bosh Menu",
-  "Change_lang" : "Tilni o'zgartirish",
-  "sign_up":"1. Ro'yxatdan o'tish",
+  "sign_up":"1. Registratsiya",
   "sign_in":"2. Kirish",
-  "language_choice":"Tanlovingizni kiriting",
+  "exit":"3. Chiqish",
+  "language_choice":"Tanlovingizni kiriting: ",
   "exit_text":"Ilovamizdan foydalanganingiz uchun rahmat...",
   "invalid_value_text":"Not`og'ri tanlov. Iltimos yana bir marta urunib kuring.",
-  "email_enter":"Email kiriting",
+  "email_enter":"Email kiriting: ",
   "email_invalid":"Elektron pochta formati noto‘g‘ri. Iltimos, to'g'ri e-pochta manzilini kiriting.",
+  "login":"login = ",
+  "password":"parol = ",
+  "error":"Xato",
+  "smth_went_wrong":"Nimadir xato ketdi bu joyida ",
+  "successfully_posted":"Muvaffaqiyatli chop etildi: ",
+  "already_have_email":"Elektron pochta allaqachon ro'yxatdan o'tgan. Boshqa elektron pochta manzilidan foydalaning.",
+  "check_password":""""
+    Parol talablari:
+      - 8 dan ortiq belgilarga ega bo'ling.
+      - Bosh harfdan iborat.
+      - Kichik harfdan iborat.
+      - Raqamni o'z ichiga oladi.
+    """"",
+  "enter_password":"Parolingizni kiriting:",
+  "password_invalid":"Parol formati noto‘g‘ri. Iltimos, uning talablarga javob berishiga ishonch hosil qiling.",
+  "enter_name":"Ismingizni kiriting: ",
+  "invalid_name":"Ism formati noto‘g‘ri. Yaroqli ism kiriting.",
+  "enter_surname":"Familiyangizni kiriting: ",
+  "enter_age":"Yoshingizni kiriting: ",
+  "invalid_age":"Noto'g'ri yosh. Yaroqli yoshni kiriting",
+  "enter_phone":"Telefon raqamingizni kiriting: ",
+  "successfully_registered":"Muvaffaqiyatli ro'yxatdan o'tdi!",
+  "welcome":"Xush kelibsiz, ",
+
 };
