@@ -14,9 +14,9 @@ class AdminUserList{
 
   static void deleteUser() {
     IOService ioService = IOService();
-    if (admins.isEmpty) {
+    if (users.isEmpty) {
 
-      ioService.pBorder("\x1b[31m There are no registered admins to delete.\t\t\t\x1b[0m\n".tr);
+      ioService.pBorder("\x1b[31m There are no registered users to delete.\t\t\t\x1b[0m\n".tr);
       return;
     }
 
@@ -32,13 +32,13 @@ class AdminUserList{
       }
       selectedIndex = int.tryParse(input) ?? -1;
 
-      if (selectedIndex < 1 || selectedIndex > admins.length) {
+      if (selectedIndex < 1 || selectedIndex > users.length) {
         ioService.pBorder("\x1b[31m Invalid index. Please enter a valid index or '0' to cancel.\t\t\t\x1b[0m\n".tr);
       }
     } while (selectedIndex < 1 || selectedIndex > admins.length);
 
     // Tanlangan adminni o'chirish
-    admins.removeAt(selectedIndex - 1);
+    users.removeAt(selectedIndex - 1);
 
     ioService.pBorder("\x1b[32m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
   }
@@ -46,27 +46,48 @@ class AdminUserList{
   static void printAllUserIndexed() {
     IOService ioService = IOService();
     print("");
-    ioService.pBorder("\x1b[32m Registered Admins :  \t\t\t\x1b[0m\n".tr);
-    admins.asMap().forEach((index, admin) {
+    ioService.pBorder("\x1b[32m Registered Users :  \t\t\t\x1b[0m\n".tr);
+    users.asMap().forEach((index, user) {
       print("");
-      ioService.pBorder("\x1b[32m Admin index ${index + 1} => Email: ${admin.login}, Password: ${admin.password}\x1b[0m\n".tr);
+      ioService.pBorder("\x1b[32m User index ${index + 1} => Email: ${user.email}, Password: ${user.password}\x1b[0m\n".tr);
     });
   }
 
-  static void addAdmin() {
-    String login;
+  static void addUser() {
+       String name;
+    do {
+      IOService ioService = IOService();
+      ioService.pBorderstdout("\x1b[32m\t Enter your name: \t\t\x1b[0m".tr);
+      name = stdin.readLineSync() ?? "";
+
+      if (!isValidName(name)) {
+        ioService.pBorder("\x1b[31m Invalid name format. Please enter a valid name.\t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidName(name));
+
+    String surname;
+    do {
+      IOService ioService = IOService();
+      ioService.pBorderstdout("\x1b[32m\t Enter your surname: \t\t\x1b[0m".tr);
+      surname = stdin.readLineSync() ?? "";
+
+      if (!isValidSurname(surname)) {
+        ioService.pBorder("\x1b[31m Invalid surname format. Please enter a valid surname.\t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidSurname(surname));
+
+    String email;
     do {
       IOService ioService = IOService();
       ioService.pBorderstdout("\x1b[32m\t Enter your email: \t\t\x1b[0m".tr);
-      login = stdin.readLineSync() ?? "";
+      email = stdin.readLineSync() ?? "";
 
-      if (!isValidEmail(login)) {
+      if (!isValidEmail(email)) {
         ioService.pBorder("\x1b[31m Invalid email format. Please enter a valid email address.\t\t\t\x1b[0m\n".tr);
-      } else if (admins.any((admin) => admin.login == login)) {
-        print("Email is already registered. Please use a different email.");
+      } else if (users.any((user) => user.email == email)) {
         ioService.pBorder("\x1b[31m Email is already registered. Please use a different email.\t\t\t\x1b[0m\n".tr);
       }
-    } while (!isValidEmail(login) || admins.any((admin) => admin.login == login));
+    } while (!isValidEmail(email) || users.any((user) => user.email == email));
 
     String password;
     do {
@@ -77,17 +98,44 @@ class AdminUserList{
 
       if (!isValidPassword(password)) {
         ioService.pBorder("\x1b[31m Invalid password format. Please make sure it meets the requirements.\t\t\t\x1b[0m\n".tr);
-      } else if (admins.any((admin) => admin.password == password)) {
+      } else if (users.any((user) => user.password == password)) {
         ioService.pBorder("\x1b[31m Password is already registered. Please use a different password.\t\t\t\x1b[0m\n".tr);
       }
     } while (!isValidPassword(password) || admins.any((admin) => admin.password == password));
-     IOService  ioService = IOService();
+
+    String age;
+    do {
+      IOService ioService = IOService();
+      ioService.pBorderstdout("\x1b[32m\t Enter your age: \t\t\x1b[0m".tr);
+      age = stdin.readLineSync() ?? "";
+
+      if (!isValidAge(age)) {
+        ioService.pBorder("\x1b[31m Invalid age format. Please enter a valid age (must be greater than 16).\t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidAge(age));
+
+    String phoneNumber;
+    do {
+      IOService ioService = IOService();
+      ioService.pBorderstdout("\x1b[32m\t Enter your phone number: \t\t\x1b[0m".tr);
+      phoneNumber = stdin.readLineSync() ?? "";
+
+      if (!isValidPhoneNumber(phoneNumber)) {
+        ioService.pBorder("\x1b[31m Invalid phone number format. Please enter a valid 9-digit number.\t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidPhoneNumber(phoneNumber));
+
+
+    IOService ioService = IOService();
     ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
-    Admin newAdmin = Admin(login: login, password: password);
-    admins.add(newAdmin);
+
+
+    User newUser = User(email: email, password: password, name: name, surname: surname, age: int.parse(age), phoneNumber: phoneNumber);
+    users.add(newUser);
   }
 
-  bool isValidText(String text) {
+
+  static bool isValidText(String text) {
     // Matn uzunligi 3 xarfdan katta
     bool isLengthValid = text.length > 2;
 
@@ -116,5 +164,23 @@ class AdminUserList{
         hasLowerCase.hasMatch(password) &&
         hasDigit.hasMatch(password);
   }
+
+ static bool isValidName(String name) {
+    return name.isNotEmpty && name.length > 3 && name[0] == name[0].toUpperCase();
+  }
+
+ static bool isValidSurname(String surname) {
+    return surname.isNotEmpty && surname.length > 3 && surname[0] == surname[0].toUpperCase();
+  }
+
+ static bool isValidAge(String age) {
+    int? parsedAge = int.tryParse(age);
+    return parsedAge != null && parsedAge > 16;
+  }
+
+ static bool isValidPhoneNumber(String phoneNumber) {
+    return phoneNumber.length == 9 && int.tryParse(phoneNumber) != null;
+  }
+
 
 }

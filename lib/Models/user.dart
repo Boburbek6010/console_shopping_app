@@ -9,15 +9,14 @@ String userToData(User user) => jsonEncode(user.toJson());
 /// User class  need to work with mock api and save, check information
 
 class User {
-  String? email;
-  String? password;
-  String? name;
-  String? surname;
-  int? age;
-  String? phoneNumber;
+ late String email;
+ late String password;
+ late String name;
+ late String surname;
+ late int age;
+ late String? phoneNumber;
 
-  User(this.email, this.password, this.name, this.surname, this.age,
-      this.phoneNumber);
+  User({required this.email, required this.password,  required this.name, required this.surname, required this.age,required this.phoneNumber});
 
   User.fromJson(Map<String, dynamic> json) {
     email = json["email"];

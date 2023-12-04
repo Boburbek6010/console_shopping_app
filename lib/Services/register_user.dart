@@ -13,7 +13,7 @@ class RegisterUser {
   /// When new user use our shop app. The one have to enter with sign up.
   void  signUp() async {
 
-    String email;
+    String? email;
     do {
       stdout.write("Enter your email: ");
       email = stdin.readLineSync() ?? "";
@@ -88,7 +88,7 @@ class RegisterUser {
         print("Invalid phone number format. You can enter only 9 digits.");
       }
     } while (!isValidPhoneNumber(phoneNumber));
-    User user = User(email, password, name, surname, age, phoneNumber);
+    User user = User(email: email, password: password, name: name, surname: surname, age: age, phoneNumber: phoneNumber);
 
     //print('User JSON: ${user.toJson()}');
 
