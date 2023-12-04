@@ -23,7 +23,7 @@ class AdminSystem extends Menu{
       }
       break;
       case "2":{
-       addAdmin();
+     //  addAdmin();
        build();
       }
       break;
@@ -76,75 +76,8 @@ class AdminSystem extends Menu{
 
 
   }
-  void deleteUser() {
-    if (RegisterAdmin.admins.isEmpty) {
-      ioService.pBorder("\x1b[31m There are no registered admins to delete.\t\t\t\x1b[0m\n".tr);
-      return;
-    }
 
-    printAllUserIndexed(); // Adminlarni ko'rsatish uchun
 
-    int selectedIndex;
-    do {
-      ioService.pBorderstdout("\x1b[32m Enter the index of the admin to delete (0 to cancel): \t\t\x1b[0m".tr);
-      String input = stdin.readLineSync() ?? "";
-
-      if (input.toLowerCase() == '0') {
-        return; // Funksiyani bekor qilish
-      }
-      selectedIndex = int.tryParse(input) ?? -1;
-
-      if (selectedIndex < 1 || selectedIndex > RegisterAdmin.admins.length) {
-        ioService.pBorder("\x1b[31m Invalid index. Please enter a valid index or '0' to cancel.\t\t\t\x1b[0m\n".tr);
-      }
-    } while (selectedIndex < 1 || selectedIndex > RegisterAdmin.admins.length);
-
-    // Tanlangan adminni o'chirish
-    RegisterAdmin.admins.removeAt(selectedIndex - 1);
-
-    ioService.pBorder("\x1b[32m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
-  }
-
-  void printAllUserIndexed() {
-    print("");
-    ioService.pBorder("\x1b[32m Registered Admins :  \t\t\t\x1b[0m\n".tr);
-    RegisterAdmin.admins.asMap().forEach((index, admin) {
-      print("");
-      ioService.pBorder("\x1b[32m Admin index ${index + 1} => Email: ${admin.login}, Password: ${admin.password}\x1b[0m\n".tr);
-    });
-  }
-
-  void addAdmin() {
-    String login;
-    do {
-      ioService.pBorderstdout("\x1b[32m\t Enter your email: \t\t\x1b[0m".tr);
-      login = stdin.readLineSync() ?? "";
-
-      if (!isValidEmail(login)) {
-        ioService.pBorder("\x1b[31m Invalid email format. Please enter a valid email address.\t\t\t\x1b[0m\n".tr);
-      } else if (RegisterAdmin.admins.any((admin) => admin.login == login)) {
-        print("Email is already registered. Please use a different email.");
-        ioService.pBorder("\x1b[31m Email is already registered. Please use a different email.\t\t\t\x1b[0m\n".tr);
-      }
-    } while (!isValidEmail(login) || RegisterAdmin.admins.any((admin) => admin.login == login));
-
-    String password;
-    do {
-
-      ioService.pBorderstdout("\x1b[32m\t Enter your password: \t\t\x1b[0m".tr);
-      password = stdin.readLineSync() ?? "";
-
-      if (!isValidPassword(password)) {
-        ioService.pBorder("\x1b[31m Invalid password format. Please make sure it meets the requirements.\t\t\t\x1b[0m\n".tr);
-      } else if (RegisterAdmin.admins.any((admin) => admin.password == password)) {
-        ioService.pBorder("\x1b[31m Password is already registered. Please use a different password.\t\t\t\x1b[0m\n".tr);
-      }
-    } while (!isValidPassword(password) || RegisterAdmin.admins.any((admin) => admin.password == password));
-
-    ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
-    Admin newAdmin = Admin(login: login, password: password);
-    RegisterAdmin.admins.add(newAdmin);
-  }
 
   void addProduct() {
     do {

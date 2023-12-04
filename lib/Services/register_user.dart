@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
+import 'package:console_shopping_app/Services/admin_user_list.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
 import 'network_service.dart';
 import 'package:console_shopping_app/Models/user.dart';
 
 class RegisterUser {
-  static List<User> users = [];
+  // static List<User> users = [];
 
 
   /// When new user use our shop app. The one have to enter with sign up.
@@ -23,10 +24,10 @@ class RegisterUser {
          Hang on, do you know that how should be email address?
          If no, google it !!!
         """);
-      } else if (users.any((user) => user.email == email)) {
+      } else if (AdminUserList.users.any((user) => user.email == email)) {
         print("Email is already registered. Please use a different email.");
       }
-    } while (!isValidEmail(email) || users.any((user) => user.email == email));
+    } while (!isValidEmail(email) || AdminUserList.users.any((user) => user.email == email));
 
     String password;
     do {
@@ -93,7 +94,7 @@ class RegisterUser {
 
     print("Successfully registered!");
 
-    users.add(user);
+    AdminUserList.users.add(user);
    // await Navigator.push(ProductMenu());
     await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
 
@@ -168,7 +169,7 @@ class RegisterUser {
       }
     } while (!isValidPassword(password));
 
-    User user = users.firstWhere((user) => user.email == email && user.password == password);
+    User user = AdminUserList.users.firstWhere((user) => user.email == email && user.password == password);
 
     print("Welcome, ${user.name}!");
     await Navigator.push(ProductMenu());
