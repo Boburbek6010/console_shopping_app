@@ -10,6 +10,13 @@ import 'main_menu.dart';
 
 class ProductMenu extends Menu{
   static const id = "/product_menu";
+ static String type ='';
+ static String name = '';
+ static String color='';
+ static double price = 0;
+ static int quantity = 0;
+  static List<Map<String, dynamic>> productList = [];
+  static Map<String, dynamic> product = {'type' : type,"color": color, 'name': name, 'price': price, 'quantity': quantity};
 
   Future<void> selectMenu(String press) async{
     switch(press){

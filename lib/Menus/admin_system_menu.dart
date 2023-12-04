@@ -6,12 +6,14 @@ import 'package:console_shopping_app/Services/navigation_service.dart';
 
 import '../Models/admin.dart';
 import '../Services/register_admin.dart';
+import 'buy_product_menu.dart';
 import 'main_menu.dart';
+import 'main_product_menu.dart';
 
 class AdminSystem extends Menu{
   IOService ioService = IOService();
   static const id = "/product_menu";
-  List<Map<String, dynamic>> productList = [];
+
 
   Future<void> selectMenu(String press) async{
     switch(press){
@@ -130,52 +132,55 @@ class AdminSystem extends Menu{
   }
 
   void addProduct() {
-    String name;
-    double price;
-    int quantity;
+
 
     do {
       stdout.write(" ");
       ioService.pBorderstdout("\x1b[32m Enter name : \x1b[0m\n".tr);
-
-      name = stdin.readLineSync() ?? "";
-
-      if (!isValidText(name)) {
+      ProductMenu.name = stdin.readLineSync() ?? "";
+      if (!isValidText(ProductMenu.name)) {
         ioService.pBorder("\x1b[31m Invalid name format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
-
       }
-    } while (!isValidText(name));
+    } while (!isValidText(ProductMenu.name));
+
+    do {
+      stdout.write(" ");
+      ioService.pBorderstdout("\x1b[32m Enter type : \x1b[0m\n".tr);
+      ProductMenu.type = stdin.readLineSync() ?? "";
+      if (!isValidText(ProductMenu.type)) {
+        ioService.pBorder("\x1b[31m Invalid type format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidText(ProductMenu.type));
+
+    do {
+      stdout.write(" ");
+      ioService.pBorderstdout("\x1b[32m Enter color : \x1b[0m\n".tr);
+      ProductMenu.color = stdin.readLineSync() ?? "";
+      if (!isValidText(ProductMenu.color)) {
+        ioService.pBorder("\x1b[31m Invalid color format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidText(ProductMenu.color));
 
     do {
       stdout.write("Enter price: ");
       String priceInput = stdin.readLineSync() ?? "";
-      price = double.tryParse(priceInput) ?? 0;
-
-      if (price <= 0) {
+      ProductMenu.price = double.tryParse(priceInput) ?? 0;
+      if (ProductMenu.price <= 0) {
         ioService.pBorder("\x1b[31m Invalid price. Please enter a valid price.\t\t\t\x1b[0m\n".tr);
-
       }
-    } while (price <= 0);
+    } while (ProductMenu.price <= 0);
 
     do {
-      stdout.write("Enter quantity: ");
-      ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
-
+      ioService.pBorderstdout("\x1b[32m Enter quantity:  \x1b[0m\n".tr);
       String quantityInput = stdin.readLineSync() ?? "";
-      quantity = int.tryParse(quantityInput) ?? 0;
-
-      if (quantity <= 0) {
-        print("Invalid quantity. Please enter a valid quantity.");
-        ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
-
+      ProductMenu.quantity = int.tryParse(quantityInput) ?? 0;
+      if (ProductMenu.quantity <= 0) {
+        ioService.pBorder("\x1b[31m Invalid quantity. Please enter a valid quantity. \t\x1b[0m\n".tr);
       }
-    } while (quantity <= 0);
+    } while (ProductMenu.quantity <= 0);
 
-    Map<String, dynamic> product = {'name': name, 'price': price, 'quantity': quantity};
-    ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
-
-    productList.add(product);
-
+    ProductMenu.productList.add(ProductMenu.product);
+    ioService.pBorder("\x1b[32m Successfully added! \t\t\t\x1b[0m\n".tr);
   }
 
 
@@ -183,9 +188,9 @@ class AdminSystem extends Menu{
 
 
   void deleteProductByIndex(int index) {
-    if (index >= 0 && index < productList.length) {
-      String deletedProductName = productList[index]['name'];
-      productList.removeAt(index);
+    if (index >= 0 && index < ProductMenu.productList.length) {
+      String deletedProductName = ProductMenu.productList[index]['name'];
+      ProductMenu.productList.removeAt(index);
       print("Product at index $index with name '$deletedProductName' deleted successfully.");
     } else {
       print("Invalid index. Please enter a valid index.");
@@ -195,14 +200,14 @@ class AdminSystem extends Menu{
 
   void printAllProducts() {
     print("Product List:");
-    productList.asMap().forEach((index, product) {
+    ProductMenu.productList.asMap().forEach((index, product) {
       print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
     });
   }
 
   void printAllProducts1() {
     print("Product List:");
-    productList.asMap().forEach((index, product) {
+    ProductMenu.productList.asMap().forEach((index, product) {
       print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
     });
   }
