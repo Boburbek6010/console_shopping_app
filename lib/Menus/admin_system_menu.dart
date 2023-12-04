@@ -18,7 +18,7 @@ class AdminSystem extends Menu{
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
-        printAllAdminsIndexed();
+        //printAllAdminsIndexed();
         build();
       }
       break;
@@ -28,37 +28,25 @@ class AdminSystem extends Menu{
       }
       break;
       case "3":{
-        deleteAdmin();
+       // deleteAdmin();
         build();
       }
       break;
       case "4":{
-
+       build();
       }
       break;
       case "5":{
-
+        build();
       }
       break;
       case "6":{
-
+        build();
       }
       break;
       case "7":{
         printAllProducts();
-      }
-      break;
-      case "8":{
-        deleteProductByIndex();
         build();
-      }
-      break;
-      case "9":{
-        addProduct();
-      }
-      break;
-      case "10":{
-        Navigator.push(SettingMenu());
       }
       break;
       default: build();
@@ -70,16 +58,16 @@ class AdminSystem extends Menu{
   Future<void> build()async{
     print("");
     ioService.pBorder("\x1b[32m\t ---------------------------- \t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 1. Adminlarni ko'rib chiqish   \t\t\t\x1b[0m".tr);
+  /*ioService.pBorder("\x1b[32m 1. Adminlarni ko'rib chiqish   \t\t\t\x1b[0m".tr);
     ioService.pBorder("\x1b[32m 2. Adminni qo'shish            \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 3. Adminni o'chirish           \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 4. Userlarni ko'rib chiqish    \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 5. Userni o'chirish            \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 6. Userni qo'shish             \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 7. Haxsulotni ko'rib chiqish   \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 8. Maxsulotni o'chirish        \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 9. Mahsulot qo'shish           \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 10. Sozlamalar                 \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[32m 3. Adminni o'chirish           \t\t\t\x1b[0m".tr);*/
+    ioService.pBorder("\x1b[32m 1. Userlarni ko'rib chiqish    \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 2. Userni o'chirish            \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 3. Userni qo'shish             \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 4. Haxsulotni ko'rib chiqish   \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 5. Maxsulotni o'chirish        \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 6. Mahsulot qo'shish           \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 7. Sozlamalar                 \t\t\t\x1b[0m\n".tr);
     IOService.write("\x1b[32m       Tanlang =>        \t\t\t\x1b[0m".tr);
 
     String press = stdin.readLineSync() ?? "";
@@ -88,13 +76,13 @@ class AdminSystem extends Menu{
 
 
   }
-  void deleteAdmin() {
+  void deleteUser() {
     if (RegisterAdmin.admins.isEmpty) {
       ioService.pBorder("\x1b[31m There are no registered admins to delete.\t\t\t\x1b[0m\n".tr);
       return;
     }
 
-    printAllAdminsIndexed(); // Adminlarni ko'rsatish uchun
+    printAllUserIndexed(); // Adminlarni ko'rsatish uchun
 
     int selectedIndex;
     do {
@@ -117,7 +105,7 @@ class AdminSystem extends Menu{
     ioService.pBorder("\x1b[32m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
   }
 
-  void printAllAdminsIndexed() {
+  void printAllUserIndexed() {
     print("");
     ioService.pBorder("\x1b[32m Registered Admins :  \t\t\t\x1b[0m\n".tr);
     RegisterAdmin.admins.asMap().forEach((index, admin) {

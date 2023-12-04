@@ -19,7 +19,7 @@ class AdminMenu extends Menu{
     switch(press){
       case "1":{
         RegisterAdmin registerAdmin = RegisterAdmin();
-         registerAdmin.signUp();
+         registerAdmin.signIn();
       }
       break;
       case "2":{

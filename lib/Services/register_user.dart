@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
-// import '../models/user.dart';
 import 'network_service.dart';
 import 'package:console_shopping_app/Models/user.dart';
 
@@ -88,12 +87,16 @@ class RegisterUser {
         print("Invalid phone number format. You can enter only 9 digits.");
       }
     } while (!isValidPhoneNumber(phoneNumber));
+    User user = User(email, password, name, surname, age, phoneNumber);
+
+    //print('User JSON: ${user.toJson()}');
 
     print("Successfully registered!");
-    User user = User(email, password, name, surname, age, phoneNumber);
+
     users.add(user);
-    await Navigator.push(ProductMenu());
+   // await Navigator.push(ProductMenu());
     await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
+
   }
 
 
@@ -154,7 +157,6 @@ class RegisterUser {
         """);
       }
     }while (!isValidEmail(email));
-
 
     String password;
     do {
