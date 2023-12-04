@@ -10,10 +10,6 @@ import '../Services/register_admin.dart';
 class AdminMenu extends Menu{
   static const id = "/user_menu";
   IOService ioService = IOService();
-  /*
-  faqat enter , Menu, Exit ==> bolimlari bolishi kerak Admin uchun default qiymatdan foydalanish kerak
-   */
-
 
   Future<void> selectMenu(String press) async{
     switch(press){
@@ -26,24 +22,29 @@ class AdminMenu extends Menu{
         Navigator.push(HomeMenu());
       }
       break;
-      case "3":{
-        ioService.pBorder("\x1b[32m \t Bizning app imizdan foydalanganingiz uchun raxmat  \t\t\t\x1b[0m".tr);
-        exit(0);
+      default: {
+        build();
       }
-      default: build();
     }
   }
 
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m \t\t\t 1. Enter         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 2. Menu         \t\t\t\x1b[0m".tr);
-    print(" ");
-    ioService.pBorder("\x1b[31m \t\t\t 3. Exit   \x1b[0m".tr);
+    ioService.pBorder("\x1b[32m1. ${IOService.txtBlock("Enter")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m2. ${IOService.txtBlock("Menu")}\x1b[0m".tr);
 
-    String press = stdin.readLineSync() ?? "";
-
+    String press ="";
+do{
+  IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+  press = stdin.readLineSync()!;
+  if(press != "1" && press != "2"){
+    print("\n");
+    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
+  } else {
+   break;
+  }
+}while(true);
     await selectMenu(press);
   }
 

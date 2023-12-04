@@ -1,5 +1,6 @@
 const Map<String, String> uz = {
   "home_menu":"Bosh Menu",
+  "Userlarni_korib_chiqish":"Barcha foydalanuvchilar",
   "sign_up":"Ro'yxatdan o'tish",
   "sign_in":"Kirish",
   "exit":"Chiqish",

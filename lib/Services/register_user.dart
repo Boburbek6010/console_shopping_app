@@ -174,6 +174,8 @@ class RegisterUser {
     print("Welcome, ${user.name}!");
     await Navigator.push(ProductMenu());
 
+    //navigator pushda productga emas yangi ochiladigan bolimlarga qo'shish kerak
+
   }
 
 }

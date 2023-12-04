@@ -12,14 +12,16 @@ Future<void> main() async {
   IOService ioService = IOService();
   {
 
-    ioService.pBorder("\x1b[32m \t\t\t Xush kelibsiz  \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t Добро пожаловать  \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t Welcome         \t\t\t\x1b[0m".tr);
-
+    ioService.pBorder("\x1b[32m \t\t\t   Xush kelibsiz     \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Добро пожаловать    \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t    Welcome          \t\t\t\x1b[0m".tr);
       print(" ");
-    ioService.pBorder("\x1b[32m \t\t\t 1. UZ  \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 2. RU  \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 3. EN  \t\t\t\x1b[0m".tr);
+    IOService.write("\x1b[34m    1. UZ  \t\x1b[0m");
+    IOService.write("\x1b[33m    2. РУ  \t\x1b[0m");
+    IOService.write("\x1b[36m    3. EN  \t\x1b[0m");
+    print("\n");
+    IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+
 
 
 

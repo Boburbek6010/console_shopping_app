@@ -24,7 +24,7 @@ class AdminUserList{
 
     int selectedIndex;
     do {
-      ioService.pBorderstdout("\x1b[32m Enter the index of the admin to delete (0 to cancel): \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m Enter the index of the admin to delete (0 to cancel): \t\t\x1b[0m".tr);
       String input = stdin.readLineSync() ?? "";
 
       if (input.toLowerCase() == '0') {
@@ -40,16 +40,16 @@ class AdminUserList{
     // Tanlangan adminni o'chirish
     users.removeAt(selectedIndex - 1);
 
-    ioService.pBorder("\x1b[32m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[33m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
   }
 
   static void printAllUserIndexed() {
     IOService ioService = IOService();
     print("");
-    ioService.pBorder("\x1b[32m Registered Users :  \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[33m Registered Users :  \t\t\t\x1b[0m\n".tr);
     users.asMap().forEach((index, user) {
       print("");
-      ioService.pBorder("\x1b[32m User index ${index + 1} => Email: ${user.email}, Password: ${user.password}\x1b[0m\n".tr);
+      ioService.pBorder("\x1b[33m User index ${index + 1} => Email: ${user.email}, Password: ${user.password}\x1b[0m\n".tr);
     });
   }
 
@@ -57,7 +57,7 @@ class AdminUserList{
        String name;
     do {
       IOService ioService = IOService();
-      ioService.pBorderstdout("\x1b[32m\t Enter your name: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your name: \t\t\x1b[0m".tr);
       name = stdin.readLineSync() ?? "";
 
       if (!isValidName(name)) {
@@ -68,7 +68,7 @@ class AdminUserList{
     String surname;
     do {
       IOService ioService = IOService();
-      ioService.pBorderstdout("\x1b[32m\t Enter your surname: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your surname: \t\t\x1b[0m".tr);
       surname = stdin.readLineSync() ?? "";
 
       if (!isValidSurname(surname)) {
@@ -79,7 +79,7 @@ class AdminUserList{
     String email;
     do {
       IOService ioService = IOService();
-      ioService.pBorderstdout("\x1b[32m\t Enter your email: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your email: \t\t\x1b[0m".tr);
       email = stdin.readLineSync() ?? "";
 
       if (!isValidEmail(email)) {
@@ -93,7 +93,7 @@ class AdminUserList{
     do {
       IOService ioService = IOService();
 
-      ioService.pBorderstdout("\x1b[32m\t Enter your password: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your password: \t\t\x1b[0m".tr);
       password = stdin.readLineSync() ?? "";
 
       if (!isValidPassword(password)) {
@@ -106,7 +106,7 @@ class AdminUserList{
     String age;
     do {
       IOService ioService = IOService();
-      ioService.pBorderstdout("\x1b[32m\t Enter your age: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your age: \t\t\x1b[0m".tr);
       age = stdin.readLineSync() ?? "";
 
       if (!isValidAge(age)) {
@@ -117,7 +117,7 @@ class AdminUserList{
     String phoneNumber;
     do {
       IOService ioService = IOService();
-      ioService.pBorderstdout("\x1b[32m\t Enter your phone number: \t\t\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[33m\t Enter your phone number: \t\t\x1b[0m".tr);
       phoneNumber = stdin.readLineSync() ?? "";
 
       if (!isValidPhoneNumber(phoneNumber)) {
@@ -127,7 +127,7 @@ class AdminUserList{
 
 
     IOService ioService = IOService();
-    ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[33m Successfully registered! \t\t\t\x1b[0m\n".tr);
 
 
     User newUser = User(email: email, password: password, name: name, surname: surname, age: int.parse(age), phoneNumber: phoneNumber);

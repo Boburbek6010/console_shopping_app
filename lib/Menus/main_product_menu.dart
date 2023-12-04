@@ -28,6 +28,10 @@ class ProductMenu extends Menu{
         await Navigator.push(BuyProductMenu());
       }
       break;
+      case "2":{
+        await Navigator.push(BuyProductMenu());
+      }
+      break;
       case "3":{
         await Navigator.push(SettingMenu());
       }
@@ -42,6 +46,8 @@ class ProductMenu extends Menu{
     print("---------------------------------");
     print("1. ${"Sell products".tr}");
     print("2. ${"Buy products".tr}");
+    print("2. ${"Basket".tr}");
+    // basketda bolishi kere listlar va id select uchun idni kiritsa yangi listga backetga tushgan elemtlarni toplaydigan qilish kerak
     print("3. ${"Setting".tr}");
 
     String press = stdin.readLineSync() ?? "";
