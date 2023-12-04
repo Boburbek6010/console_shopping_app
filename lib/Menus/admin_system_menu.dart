@@ -28,7 +28,8 @@ class AdminSystem extends Menu{
       }
       break;
       case "3":{
-
+        deleteAdmin();
+        build();
       }
       break;
       case "4":{
@@ -48,9 +49,7 @@ class AdminSystem extends Menu{
       }
       break;
       case "8":{
-        stdout.write("index raqamini kiriting ");
-        int x = int.tryParse(stdin.readLineSync()!)!;
-        deleteProductByIndex(x);
+        deleteProductByIndex();
         build();
       }
       break;
@@ -71,23 +70,51 @@ class AdminSystem extends Menu{
   Future<void> build()async{
     print("");
     ioService.pBorder("\x1b[32m\t ---------------------------- \t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 1. Adminlarni ko'rib chiqish \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 2. Adminni o'chirish         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 3. Adminni qo'shish          \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 4. Userlarni ko'rib chiqish  \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 5. Userni o'chirish          \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 6. Userni qo'shish           \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 7. Haxsulotni ko'rib chiqish \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 8. Maxsulotni o'chirish      \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 9. Mahsulot qo'shish         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 10. Sozlamalar               \t\t\t\x1b[0m\n".tr);
-    IOService.write("\x1b[32m       Tanlang =>              \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. Adminlarni ko'rib chiqish   \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 2. Adminni qo'shish            \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 3. Adminni o'chirish           \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 4. Userlarni ko'rib chiqish    \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 5. Userni o'chirish            \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 6. Userni qo'shish             \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 7. Haxsulotni ko'rib chiqish   \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 8. Maxsulotni o'chirish        \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 9. Mahsulot qo'shish           \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 10. Sozlamalar                 \t\t\t\x1b[0m\n".tr);
+    IOService.write("\x1b[32m       Tanlang =>        \t\t\t\x1b[0m".tr);
 
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);
 
 
+  }
+  void deleteAdmin() {
+    if (RegisterAdmin.admins.isEmpty) {
+      ioService.pBorder("\x1b[31m There are no registered admins to delete.\t\t\t\x1b[0m\n".tr);
+      return;
+    }
+
+    printAllAdminsIndexed(); // Adminlarni ko'rsatish uchun
+
+    int selectedIndex;
+    do {
+      ioService.pBorderstdout("\x1b[32m Enter the index of the admin to delete (0 to cancel): \t\t\x1b[0m".tr);
+      String input = stdin.readLineSync() ?? "";
+
+      if (input.toLowerCase() == '0') {
+        return; // Funksiyani bekor qilish
+      }
+      selectedIndex = int.tryParse(input) ?? -1;
+
+      if (selectedIndex < 1 || selectedIndex > RegisterAdmin.admins.length) {
+        ioService.pBorder("\x1b[31m Invalid index. Please enter a valid index or '0' to cancel.\t\t\t\x1b[0m\n".tr);
+      }
+    } while (selectedIndex < 1 || selectedIndex > RegisterAdmin.admins.length);
+
+    // Tanlangan adminni o'chirish
+    RegisterAdmin.admins.removeAt(selectedIndex - 1);
+
+    ioService.pBorder("\x1b[32m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
   }
 
   void printAllAdminsIndexed() {
@@ -132,8 +159,6 @@ class AdminSystem extends Menu{
   }
 
   void addProduct() {
-
-
     do {
       stdout.write(" ");
       ioService.pBorderstdout("\x1b[32m Enter name : \x1b[0m\n".tr);
@@ -183,11 +208,16 @@ class AdminSystem extends Menu{
     ioService.pBorder("\x1b[32m Successfully added! \t\t\t\x1b[0m\n".tr);
   }
 
+  void printAllProducts() {
+    print("Product List:");
+    ProductMenu.productList.asMap().forEach((index, product) {
+      print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
+    });
+  }
 
-
-
-
-  void deleteProductByIndex(int index) {
+  void deleteProductByIndex() {
+    print("index raqamini kiriting ");
+    int index = int.tryParse(stdin.readLineSync()!)!;
     if (index >= 0 && index < ProductMenu.productList.length) {
       String deletedProductName = ProductMenu.productList[index]['name'];
       ProductMenu.productList.removeAt(index);
@@ -197,20 +227,6 @@ class AdminSystem extends Menu{
     }
   }
 
-
-  void printAllProducts() {
-    print("Product List:");
-    ProductMenu.productList.asMap().forEach((index, product) {
-      print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
-    });
-  }
-
-  void printAllProducts1() {
-    print("Product List:");
-    ProductMenu.productList.asMap().forEach((index, product) {
-      print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
-    });
-  }
 
   bool isValidText(String text) {
     // Matn uzunligi 3 xarfdan katta
@@ -226,13 +242,11 @@ class AdminSystem extends Menu{
     return isLengthValid && !hasDigit && hasLetter;
   }
 
-  // Checking valid email. A valid mail should meet the following requirements;
   bool isValidEmail(String email) {
     RegExp emailRegExp = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegExp.hasMatch(email);
   }
 
-  // Checking valid password. A valid password should meet the following requirements;
   bool isValidPassword(String password) {
     RegExp hasUpperCase = RegExp(r'[A-Z]');
     RegExp hasLowerCase = RegExp(r'[a-z]');
