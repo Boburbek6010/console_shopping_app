@@ -1,13 +1,18 @@
 import 'dart:io';
-import '../models/user.dart';
+
+import 'package:console_shopping_app/Menus/main_product_menu.dart';
+import 'package:console_shopping_app/Services/navigation_service.dart';
+// import '../models/user.dart';
 import 'network_service.dart';
+import 'package:console_shopping_app/Models/user.dart';
 
 class RegisterUser {
   static List<User> users = [];
 
 
   /// When new user use our shop app. The one have to enter with sign up.
-  void signUp() async {
+  void  signUp() async {
+
     String email;
     do {
       stdout.write("Enter your email: ");
@@ -15,6 +20,10 @@ class RegisterUser {
 
       if (!isValidEmail(email)) {
         print("Invalid email format. Please enter a valid email address.");
+        print("""
+         Hang on, do you know that how should be email address?
+         If no, google it !!!
+        """);
       } else if (users.any((user) => user.email == email)) {
         print("Email is already registered. Please use a different email.");
       }
@@ -43,12 +52,19 @@ class RegisterUser {
       name = stdin.readLineSync() ?? "";
 
       if (!isValidName(name)) {
-        print("Invalid name format. Please enter a valid name.");
+        print("Invalid name format. First letter of name should be capital letter.");
       }
     } while (!isValidName(name));
 
+    String surname;
+    do {
     stdout.write("Enter your surname: ");
-    String surname = stdin.readLineSync() ?? "";
+     surname = stdin.readLineSync() ?? "";
+
+      if (!isValidSurname(surname)) {
+        print("Invalid surname format. First letter of surname should be capital letter.");
+      }
+    } while (!isValidSurname(surname));
 
     int age;
     do {
@@ -58,16 +74,26 @@ class RegisterUser {
 
       if (age <= 0) {
         print("Invalid age. Please enter a valid age.");
+      } else if (age < 16) {
+        print("You are too young. You must be 16 or older.");
       }
-    } while (age <= 0);
+    } while (age <= 0 || age < 16);
 
-    stdout.write("Enter your phone number: ");
-    String phoneNumber = stdin.readLineSync() ?? "";
+    String phoneNumber;
+    do {
+    stdout.write("Enter your phone number: +998");
+    phoneNumber = stdin.readLineSync() ?? "";
+
+      if (!isValidPhoneNumber(phoneNumber)) {
+        print("Invalid phone number format. You can enter only 9 digits.");
+      }
+    } while (!isValidPhoneNumber(phoneNumber));
+
     print("Successfully registered!");
-
     User user = User(email, password, name, surname, age, phoneNumber);
-    await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
     users.add(user);
+    await Navigator.push(ProductMenu());
+    await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
   }
 
 
@@ -98,18 +124,52 @@ class RegisterUser {
     return nameRegExp.hasMatch(name);
   }
 
+  ///Checking vail phone number. A valid phone number should meet the following requirements;
+  bool isValidPhoneNumber(String input) {
+
+    return RegExp(r'^\d{9}$').hasMatch(input);
+  }
+
+
+  ///Checking vail surname. A valid surname should meet the following requirements;
+  bool isValidSurname(String name) {
+
+    RegExp nameRegExp = RegExp(r'^[A-Z][a-zA-Z]{2,}$');
+    return nameRegExp.hasMatch(name);
+  }
+
+
   /// When old user use our shop app. The one have to enter with sign in.
-  void signIn() {
-    stdout.write("Enter your email: ");
-    String email = stdin.readLineSync() ?? "";
+  void signIn() async{
 
-    stdout.write("Enter your password: ");
-    String password = stdin.readLineSync() ?? "";
+    String email;
+    do {
+      stdout.write("Enter your email: ");
+      email = stdin.readLineSync() ?? "";
 
+      if (!isValidEmail(email)) {
+        print("Invalid email format. Please enter a valid email address.");
+        print("""
+        First of all, you should be register!
+        """);
+      }
+    }while (!isValidEmail(email));
+
+
+    String password;
+    do {
+      stdout.write("Enter your password: ");
+      password = stdin.readLineSync() ?? "";
+
+      if (!isValidPassword(password)) {
+        print("Invalid password format.");
+      }
+    } while (!isValidPassword(password));
 
     User user = users.firstWhere((user) => user.email == email && user.password == password);
 
     print("Welcome, ${user.name}!");
+    await Navigator.push(ProductMenu());
 
   }
 

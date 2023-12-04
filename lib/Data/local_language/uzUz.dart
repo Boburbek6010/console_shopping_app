@@ -1,8 +1,9 @@
 const Map<String, String> uz = {
   "home_menu":"Bosh Menu",
-  "sign_up":"Registratsiya",
+  "sign_up":"Ro'yxatdan o'tish",
   "sign_in":"Kirish",
   "exit":"Chiqish",
+  "setting" :"Sozlamalar",
   "language_choice":"Tanlovingizni kiriting: ",
   "exit_text":"Ilovamizdan foydalanganingiz uchun rahmat...",
   "invalid_value_text":"Not`og'ri tanlov. Iltimos yana bir marta urunib kuring.",
@@ -16,13 +17,13 @@ const Map<String, String> uz = {
   "already_have_email":"Elektron pochta allaqachon ro'yxatdan o'tgan. Boshqa elektron pochta manzilidan foydalaning.",
   "check_password":""""
     Parol talablari:
-      - 8 dan ortiq belgilarga ega bo'ling.
-      - Bosh harfdan iborat.
-      - Kichik harfdan iborat.
-      - Raqamni o'z ichiga oladi.
+      - 8 dan ortiq belgilarga ega bo'lishi.
+      - Bosh harf bo'lishi.
+      - Kichik harf bo'lishi.
+      - Raqamni o'z ichiga olishi.
     """"",
   "enter_password":"Parolingizni kiriting:",
-  "password_invalid":"Parol formati noto‘g‘ri. Iltimos, uning talablarga javob berishiga ishonch hosil qiling.",
+  "password_invalid":"Parol formati noto‘g‘ri. Iltimos, talabga javob beradigan parol kiriting.",
   "enter_name":"Ismingizni kiriting: ",
   "invalid_name":"Ism formati noto‘g‘ri. Yaroqli ism kiriting.",
   "enter_surname":"Familiyangizni kiriting: ",
@@ -31,7 +32,7 @@ const Map<String, String> uz = {
   "enter_phone":"Telefon raqamingizni kiriting: ",
   "successfully_registered":"Muvaffaqiyatli ro'yxatdan o'tdi!",
   "welcome":"Xush kelibsiz ",
-  "Change_lang":"Til uzgartirish: ",
+  "Change_lang":"Til o'zgartirish ",
   "Home_menu":"Bosh Menu",
   "Exit":"Chiqish",
 
