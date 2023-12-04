@@ -45,7 +45,9 @@ class Departaments extends Menu{
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);
+  }
 
+  void productTransport(){
 
   }
 
