@@ -14,6 +14,9 @@ class IOService{
   void pBorder(Object? value){
     print('\x1b[51m $value \x1b[0m');
   }
+  void pBorderstdout(Object? value){
+    stdout.write('\x1b[51m $value \x1b[0m');
+  }
 
   ///prints bold
   void pBold(Object? value){

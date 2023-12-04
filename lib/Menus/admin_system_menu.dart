@@ -90,7 +90,7 @@ class AdminSystem extends Menu{
 
   void printAllAdminsIndexed() {
     print("");
-    ioService.pBorder("\x1b[32m Registered Admins :              \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[32m Registered Admins :  \t\t\t\x1b[0m\n".tr);
     RegisterAdmin.admins.asMap().forEach((index, admin) {
       print("");
       ioService.pBorder("\x1b[32m Admin index ${index + 1} => Email: ${admin.login}, Password: ${admin.password}\x1b[0m\n".tr);
@@ -100,29 +100,31 @@ class AdminSystem extends Menu{
   void addAdmin() {
     String login;
     do {
-      stdout.write("Enter your email: ");
+      ioService.pBorderstdout("\x1b[32m\t Enter your email: \t\t\x1b[0m".tr);
       login = stdin.readLineSync() ?? "";
 
       if (!isValidEmail(login)) {
-        print("Invalid email format. Please enter a valid email address.");
+        ioService.pBorder("\x1b[31m Invalid email format. Please enter a valid email address.\t\t\t\x1b[0m\n".tr);
       } else if (RegisterAdmin.admins.any((admin) => admin.login == login)) {
         print("Email is already registered. Please use a different email.");
+        ioService.pBorder("\x1b[31m Email is already registered. Please use a different email.\t\t\t\x1b[0m\n".tr);
       }
     } while (!isValidEmail(login) || RegisterAdmin.admins.any((admin) => admin.login == login));
 
     String password;
     do {
-      stdout.write("Enter your password: ");
+
+      ioService.pBorderstdout("\x1b[32m\t Enter your password: \t\t\x1b[0m".tr);
       password = stdin.readLineSync() ?? "";
 
       if (!isValidPassword(password)) {
-        print("Invalid password format. Please make sure it meets the requirements.");
+        ioService.pBorder("\x1b[31m Invalid password format. Please make sure it meets the requirements.\t\t\t\x1b[0m\n".tr);
       } else if (RegisterAdmin.admins.any((admin) => admin.password == password)) {
-        print("Password is already registered. Please use a different password.");
+        ioService.pBorder("\x1b[31m Password is already registered. Please use a different password.\t\t\t\x1b[0m\n".tr);
       }
     } while (!isValidPassword(password) || RegisterAdmin.admins.any((admin) => admin.password == password));
 
-    print("Successfully registered!");
+    ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
     Admin newAdmin = Admin(login: login, password: password);
     RegisterAdmin.admins.add(newAdmin);
   }
@@ -133,11 +135,14 @@ class AdminSystem extends Menu{
     int quantity;
 
     do {
-      stdout.write("Enter name: ");
+      stdout.write(" ");
+      ioService.pBorderstdout("\x1b[32m Enter name : \x1b[0m\n".tr);
+
       name = stdin.readLineSync() ?? "";
 
       if (!isValidText(name)) {
-        print("Invalid name format. Please enter a valid name.");
+        ioService.pBorder("\x1b[31m Invalid name format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
+
       }
     } while (!isValidText(name));
 
@@ -147,21 +152,28 @@ class AdminSystem extends Menu{
       price = double.tryParse(priceInput) ?? 0;
 
       if (price <= 0) {
-        print("Invalid price. Please enter a valid price.");
+        ioService.pBorder("\x1b[31m Invalid price. Please enter a valid price.\t\t\t\x1b[0m\n".tr);
+
       }
     } while (price <= 0);
 
     do {
       stdout.write("Enter quantity: ");
+      ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
+
       String quantityInput = stdin.readLineSync() ?? "";
       quantity = int.tryParse(quantityInput) ?? 0;
 
       if (quantity <= 0) {
         print("Invalid quantity. Please enter a valid quantity.");
+        ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
+
       }
     } while (quantity <= 0);
 
     Map<String, dynamic> product = {'name': name, 'price': price, 'quantity': quantity};
+    ioService.pBorder("\x1b[32m Successfully registered! \t\t\t\x1b[0m\n".tr);
+
     productList.add(product);
 
   }
@@ -209,13 +221,13 @@ class AdminSystem extends Menu{
     return isLengthValid && !hasDigit && hasLetter;
   }
 
-  /// Checking valid email. A valid mail should meet the following requirements;
+  // Checking valid email. A valid mail should meet the following requirements;
   bool isValidEmail(String email) {
     RegExp emailRegExp = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegExp.hasMatch(email);
   }
 
-  /// Checking valid password. A valid password should meet the following requirements;
+  // Checking valid password. A valid password should meet the following requirements;
   bool isValidPassword(String password) {
     RegExp hasUpperCase = RegExp(r'[A-Z]');
     RegExp hasLowerCase = RegExp(r'[a-z]');

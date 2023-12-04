@@ -35,7 +35,7 @@ class AdminMenu extends Menu{
   Future<void> build()async{
     ioService.pBorder("\x1b[32m \t\t\t 1. Sign up         \t\t\t\x1b[0m".tr);
     ioService.pBorder("\x1b[32m \t\t\t 2. Sign in         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 3. Exit         \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[31m \t\t\t 3. Exit   \x1b[0m".tr);
 
     String press = stdin.readLineSync() ?? "";
 
