@@ -1,14 +1,46 @@
-import 'dart:convert';
 import 'dart:io';
-import '../Registration/register_user.dart';
-import 'package:console_shopping_app/Models/user.dart';
+import 'package:console_shopping_app/Menus/home_menu.dart';
+import 'package:console_shopping_app/Menus/setting_menu.dart';
+import 'package:console_shopping_app/Services/extention_service.dart';
+import 'package:console_shopping_app/Services/io_service.dart';
+import 'package:console_shopping_app/Services/language_service.dart';
+import 'package:console_shopping_app/my_app.dart';
 
 
-/// When run, it will be run firstly
-void main() {
-  print(" W " " E "" L " " C "" O " " M " " E ");
-  start();
+
+Future<void> main() async {
+  IOService ioService = IOService();
+  {
+
+    ioService.pBorder("\x1b[32m \t\t\t Xush kelibsiz  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Добро пожаловать  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t Welcome         \t\t\t\x1b[0m".tr);
+
+      print(" ");
+    ioService.pBorder("\x1b[32m \t\t\t 1. UZ  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t 2. RU  \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t 3. EN  \t\t\t\x1b[0m".tr);
+
+
+
+
+    String lang = stdin.readLineSync()!;
+
+    LanguageService.switchLanguage(lang);
+
+    MyApp(
+      home: HomeMenu(),
+      lang: Language.uz,
+      routes: {
+        HomeMenu.id:HomeMenu(),
+
+        SettingMenu.id:SettingMenu()
+      },
+    );
+
+
+  }
+
+
+
 }
-
-
-
