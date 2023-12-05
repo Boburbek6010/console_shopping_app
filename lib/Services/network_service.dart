@@ -24,15 +24,19 @@ class NetworkService {
     }
   }
 
-  static Future<String> postData(Map<String, dynamic> body, String baseUrl, String api)async{
+  static Future<String> postData(Map<String, dynamic> body, String baseUrl, String api) async {
     Uri url = Uri.https(baseUrl, api);
     Response response = await post(url, body: jsonEncode(body), headers: headers);
-    if(response.statusCode ==200 || response.statusCode ==201){
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return "${"successfully_posted".tr} ${response.body}";
-    }else{
+    } else {
       return "${"smth_went_wrong".tr} ${response.statusCode}";
     }
   }
+
+
+
+
 
   static Future<String> deleteUserData(String id)async{
     Uri url = Uri.https(baseUrl, "$apiDeleteUser/$id");

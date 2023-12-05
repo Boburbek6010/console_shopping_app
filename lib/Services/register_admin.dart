@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/admin_system_menu.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
-import 'package:console_shopping_app/Services/register_user.dart';
+
 
 import '../Models/admin.dart';
 import 'network_service.dart';
@@ -63,7 +63,9 @@ class RegisterAdmin {
   }
 
   /// When old user use our shop app. The one have to enter with sign in.
+
   void signIn() {
+  do {
     stdout.write("Elektron pochta manzilingizni kiriting: ");
     String email = stdin.readLineSync() ?? "";
 
@@ -71,7 +73,7 @@ class RegisterAdmin {
     String password = stdin.readLineSync() ?? "";
 
     Admin admin = admins.firstWhere(
-          (admin) => admin.login == email && admin.password == password,
+      (admin) => admin.login == email && admin.password == password,
       orElse: () => Admin(login: '', password: ''), // Bo'sh Admin obyekti
     );
 
@@ -79,9 +81,14 @@ class RegisterAdmin {
       print("Xush kelibsiz, ${admin.login}!");
       Navigator.push(AdminSystem());
     } else {
-      print("Noto'g'ri email yoki parol. Iltimos, qayta urinib ko'ring yoki ro'yxatdan o'ting.");
+      print("Bunday email mavjud emas. Iltimos, qayta urinib ko'ring yoki ro'yxatdan o'ting.");
     }
-  }
+  } while (admin.login.isNotEmpty); // Tsiklni davom ettirish shart
+}
+
+
+
+
 
 
 }

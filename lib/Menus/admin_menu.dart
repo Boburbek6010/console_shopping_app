@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:console_shopping_app/Menus/home_menu.dart';
 import 'package:console_shopping_app/Menus/main_menu.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
+import 'package:console_shopping_app/Services/navigation_service.dart';
 import '../Services/io_service.dart';
 import '../Services/register_admin.dart';
 
@@ -13,32 +15,36 @@ class AdminMenu extends Menu{
     switch(press){
       case "1":{
         RegisterAdmin registerAdmin = RegisterAdmin();
-         registerAdmin.signUp();
+         registerAdmin.signIn();
       }
       break;
       case "2":{
-        RegisterAdmin registerAdmin = RegisterAdmin();
-        registerAdmin.signIn();
+        Navigator.push(HomeMenu());
       }
       break;
-      case "3":{
-        ioService.pBlue("sdf");
-        ioService.pBorder("\x1b[32m \t Bizning app imizdan foydalanganingiz uchun raxmat  \t\t\t\x1b[0m".tr);
-        exit(0);
+      default: {
+        build();
       }
-      default: build();
     }
   }
 
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m \t\t\t 1. Sign up         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 2. Sign in         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[31m \t\t\t 3. Exit   \x1b[0m".tr);
+    ioService.pBorder("\x1b[32m1. ${IOService.txtBlock("Enter")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m2. ${IOService.txtBlock("Menu")}\x1b[0m".tr);
 
-    String press = stdin.readLineSync() ?? "";
-
+    String press ="";
+do{
+  IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+  press = stdin.readLineSync()!;
+  if(press != "1" && press != "2"){
+    print("\n");
+    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
+  } else {
+   break;
+  }
+}while(true);
     await selectMenu(press);
   }
 

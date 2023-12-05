@@ -38,4 +38,12 @@ class IOService{
     print('\x1b[34m $value\x1b[0m');
   }
 
+ static String txtBlock(String txtin){
+    String txt = txtin;
+    for(int i = txt.length; i<40; i++){
+      txt += " ";
+    }
+    return txt;
+  }
+
 }

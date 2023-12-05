@@ -1,19 +1,19 @@
 import 'dart:io';
 
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
+import 'package:console_shopping_app/Services/admin_user_list.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
-// import '../models/user.dart';
 import 'network_service.dart';
 import 'package:console_shopping_app/Models/user.dart';
 
 class RegisterUser {
-  static List<User> users = [];
+  // static List<User> users = [];
 
 
   /// When new user use our shop app. The one have to enter with sign up.
   void  signUp() async {
 
-    String email;
+    String? email;
     do {
       stdout.write("Enter your email: ");
       email = stdin.readLineSync() ?? "";
@@ -24,10 +24,10 @@ class RegisterUser {
          Hang on, do you know that how should be email address?
          If no, google it !!!
         """);
-      } else if (users.any((user) => user.email == email)) {
+      } else if (AdminUserList.users.any((user) => user.email == email)) {
         print("Email is already registered. Please use a different email.");
       }
-    } while (!isValidEmail(email) || users.any((user) => user.email == email));
+    } while (!isValidEmail(email) || AdminUserList.users.any((user) => user.email == email));
 
     String password;
     do {
@@ -88,12 +88,16 @@ class RegisterUser {
         print("Invalid phone number format. You can enter only 9 digits.");
       }
     } while (!isValidPhoneNumber(phoneNumber));
+    User user = User(email: email, password: password, name: name, surname: surname, age: age, phoneNumber: phoneNumber);
+
+    //print('User JSON: ${user.toJson()}');
 
     print("Successfully registered!");
-    User user = User(email, password, name, surname, age, phoneNumber);
-    users.add(user);
-    await Navigator.push(ProductMenu());
+
+    AdminUserList.users.add(user);
+   // await Navigator.push(ProductMenu());
     await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
+
   }
 
 
@@ -155,7 +159,6 @@ class RegisterUser {
       }
     }while (!isValidEmail(email));
 
-
     String password;
     do {
       stdout.write("Enter your password: ");
@@ -166,10 +169,12 @@ class RegisterUser {
       }
     } while (!isValidPassword(password));
 
-    User user = users.firstWhere((user) => user.email == email && user.password == password);
+    User user = AdminUserList.users.firstWhere((user) => user.email == email && user.password == password);
 
     print("Welcome, ${user.name}!");
     await Navigator.push(ProductMenu());
+
+    //navigator pushda productga emas yangi ochiladigan bolimlarga qo'shish kerak
 
   }
 
