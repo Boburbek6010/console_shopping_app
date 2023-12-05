@@ -4,6 +4,8 @@ const Map<String, String> en = {
   "sign_up":"Sign Up",
   "sign_in":"Sign In",
   "exit":"Exit",
+  "Administrator" : "Administrator",
+  "user" : "User",
   "setting" :"Setting",
   "language_choice":"Enter your choice: ",
   "exit_text":"Thank you for using our app...",
