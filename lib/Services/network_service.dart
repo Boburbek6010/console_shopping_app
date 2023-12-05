@@ -26,11 +26,10 @@ class NetworkService {
 
   static Future<String>postData(Map<String, dynamic> body)async{
     Uri url = Uri.https(baseUrl, apiUser);
-    print("object1");
+
     Response response = await post(url, body: jsonEncode(body), headers: headers);
-    print("object2");
+
     if(response.statusCode == 200 || response.statusCode == 201){
-      print("object3");
       return "Successfully posted: ${response.body}";
     }else{
       print("object4");

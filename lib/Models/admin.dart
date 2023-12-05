@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:console_shopping_app/Services/extention_service.dart';
 
 List<Admin> userFromData(String data) =>List<Admin>.from(jsonDecode(data).map((e) => Admin.fromJson(e)));

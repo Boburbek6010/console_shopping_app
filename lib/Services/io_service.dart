@@ -6,6 +6,36 @@ class IOService{
     stdout.write(str);
   }
 
+  static void write1<T>(T str){
+    int num;
+    do {
+      stdout.write(str);
+      String num1 = stdin.readLineSync() ?? "";
+      num = int.tryParse(num1) ?? 0;
+      if (num <= 0){
+        print("Invalid input. Please, choose 1 || 2 || 3 ||");
+      } else if (num > 3) {
+        print("You can choose only  1 || 2 || 3 ||");
+      }
+    } while (num <= 0 || num > 3);
+  }
+  Future<void> selectWhoAreU() async {
+    String press = IOService.read();
+    switch(press){
+      case "1":{
+        "1";
+      }
+      break;
+
+      case "2":{
+       "2";
+      }
+      default: selectWhoAreU();
+    }
+  }
+
+
+
   static String read<T>(){
     return stdin.readLineSync() ?? "";
   }
