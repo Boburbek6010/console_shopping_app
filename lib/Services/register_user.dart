@@ -95,7 +95,7 @@ class RegisterUser {
     print("Successfully registered!");
 
     AdminUserList.users.add(user);
-   // await Navigator.push(ProductMenu());
+    await Navigator.push(ProductMenu());
     await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
 
   }
