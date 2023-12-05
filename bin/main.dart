@@ -32,7 +32,6 @@ Future<void> main() async {
 
     MyApp(
       home: HomeMenu(),
-      lang: Language.uz,
       routes: {
         HomeMenu.id:HomeMenu(),
         SettingMenu.id:SettingMenu()

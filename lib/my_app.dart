@@ -8,9 +8,7 @@ class MyApp{
   MyApp({
     required Menu home,
     required Map<String, Menu> routes,
-    required Language lang,
   }){
-    LanguageService.setLanguage = lang;
     routeMenu = routes;
     _runApp(home);
   }

@@ -3,7 +3,7 @@ import '../Services/language_service.dart';
 import 'main_menu.dart';
 
 class LanguageMenu extends Menu{
-  static const id = "/settings_menu";
+  static const id = "/language_menu";
 
   Future<void> selectMenu(String press) async{
     switch(press){
