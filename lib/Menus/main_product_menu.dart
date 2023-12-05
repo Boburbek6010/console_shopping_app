@@ -114,6 +114,9 @@ class ProductMenu extends Menu{
   static Map<String, dynamic> product = {'type' : type,"color": color, 'name': name, 'price': price, 'quantity': quantity};
   static List<List<Map<String, dynamic>>> alltypes = [defaultproductList,productListBolalarUchun,defaultproductList,productListHobbiVaDamOlish, productListModaVaStil,productListUyBog, productListElectrJihozlar,productListUyHayvonlari, productListTransport, productListKochmasMulk,productListBolalarUchun];
 
+
+
+
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
