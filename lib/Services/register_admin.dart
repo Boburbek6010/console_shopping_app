@@ -7,8 +7,8 @@ import '../Models/admin.dart';
 import 'network_service.dart';
 
 class RegisterAdmin {
-  Admin admin = Admin(password: "Z7z2pjEB@", login: "mrkarimov708k@gmail.com");
-  static List<Admin> admins = [Admin(login: "mrkarimov708k@gmail.com", password: "Z7z2pjEB@")];
+  Admin admin = Admin(password: " ", login: " ");
+  static List<Admin> admins = [Admin(login: "zafarbek@gmail.com", password: "zafarbek7008k")];
 
   /// When new user use our shop app. The one have to enter with sign up.
   void signUp() async {

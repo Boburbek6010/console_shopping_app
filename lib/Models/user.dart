@@ -11,7 +11,7 @@ class User {
   late  String surname;
   late  int age;
   late  String phoneNumber;
-  late  String id;
+  //late  String id;
 
   User(
     this.email,
@@ -20,7 +20,7 @@ class User {
      this.surname,
      this.age,
      this.phoneNumber,
-     this.id,
+      //this.id,
   );
 
   User.fromJson(Map<String, dynamic> json){
@@ -30,7 +30,7 @@ class User {
     surname = json["surname"];
     age = json["age"];
     phoneNumber = json["phoneNumber"];
-    id = json["id"];
+    //id = json["id"];
   }
 
   Map<String, dynamic> toJson() => {
@@ -40,6 +40,6 @@ class User {
     "surname": surname,
     "age": age,
     "phoneNumber": phoneNumber,
-    "id": id,
+   // "id": id,
   };
 }

@@ -14,7 +14,7 @@ class BuyProductMenu extends Menu{
     switch(press){
       case "1":{
         ProductFunction productFunction = ProductFunction();
-        productFunction.printAllProducts();
+        productFunction.printElementsWithIndexes();
         build();
       }
       break;

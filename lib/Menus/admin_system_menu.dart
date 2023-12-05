@@ -32,7 +32,7 @@ class AdminSystem extends Menu{
       }
       break;
       case "4":{
-        productFunction.printAllProducts();
+        productFunction.printElementsWithIndexes();
        build();
       }
       break;

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
 import 'package:console_shopping_app/Services/admin_user_list.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
+import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
 import '../Menus/main_menu.dart';
 import '../Menus/setting_menu.dart';
@@ -31,8 +32,20 @@ class RegisterUser extends Menu{
     print("1. ${"sign_up".tr}");
     print("2. ${"sign_in".tr}");
     print("3. ${"setting".tr}");
-    String press = stdin.readLineSync() ?? "";
+    String press ="";
+    do{
+      IOService ioService =IOService();
+      IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+      press = stdin.readLineSync()!;
+      if(press != "1" && press != "2" && press != "3"){
+        print("\n");
+        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock(" Xato kiritdingiz ")}\x1b[0m".tr);
+      } else {
+        break;
+      }
+    }while(true);
     await selectMenu(press);
+  }
   }
 
 
@@ -115,7 +128,8 @@ class RegisterUser extends Menu{
       }
     } while (!isValidPhoneNumber(phoneNumber));
 
-    User user = User(email, password, name, surname, age, phoneNumber, id);
+    String id = '';
+    User user = User(email, password, name, surname, age, phoneNumber, /*id*/);
 
 
     //print('User JSON: ${user.toJson()}');
@@ -202,7 +216,7 @@ class RegisterUser extends Menu{
 
   }
 
-}
+
 
 // admin systemga qoshiladigan funksiyalarni shu yerdan ishlataman yani mock apidagi userlarni print delet qilish uchun
 

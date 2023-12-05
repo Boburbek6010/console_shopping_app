@@ -31,8 +31,8 @@ class AdminMenu extends Menu{
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m1. ${IOService.txtBlock("Enter")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m2. ${IOService.txtBlock("Menu")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Enter")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Menu")}\x1b[0m".tr);
 
     String press ="";
 do{
@@ -40,7 +40,7 @@ do{
   press = stdin.readLineSync()!;
   if(press != "1" && press != "2"){
     print("\n");
-    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock(" Xato kiritdingiz ")}\x1b[0m".tr);
   } else {
    break;
   }

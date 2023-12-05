@@ -1,21 +1,21 @@
 import 'dart:io';
-
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
-
+import '../Menus/main_product_menu.dart';
 import '../Models/admin.dart';
 import '../Models/user.dart';
+import 'navigation_service.dart';
+import 'network_service.dart';
 
 class AdminUserList{
   Admin admin = Admin(password: "Z7z2pjEB@", login: "mrkarimov708k@gmail.com");
   static List<Admin> admins = [Admin(login: "mrkarimov708k@gmail.com", password: "Z7z2pjEB@")];
-  static List<User> users = [];
+  static List<User> users =[User("Ali@gmail.com", "Zasqw234", "Alikhan", "Alikhojayev", 45, "998887744", /*"d"*/)];
 
 
   static void deleteUser() {
     IOService ioService = IOService();
     if (users.isEmpty) {
-
       ioService.pBorder("\x1b[31m There are no registered users to delete.\t\t\t\x1b[0m\n".tr);
       return;
     }
@@ -40,7 +40,7 @@ class AdminUserList{
     // Tanlangan adminni o'chirish
     users.removeAt(selectedIndex - 1);
 
-    ioService.pBorder("\x1b[33m Admin successfully deleted! \t\t\t\x1b[0m\n".tr);
+    ioService.pBorder("\x1b[33m User successfully deleted! \t\t\t\x1b[0m\n".tr);
   }
 
   static void printAllUserIndexed() {
@@ -101,18 +101,18 @@ class AdminUserList{
       } else if (users.any((user) => user.password == password)) {
         ioService.pBorder("\x1b[31m Password is already registered. Please use a different password.\t\t\t\x1b[0m\n".tr);
       }
-    } while (!isValidPassword(password) || admins.any((admin) => admin.password == password));
+    } while (!isValidPassword(password) || users.any((user) => user.password == password));
 
-    String age;
+    int age;
     do {
       IOService ioService = IOService();
       ioService.pBorderstdout("\x1b[33m\t Enter your age: \t\t\x1b[0m".tr);
-      age = stdin.readLineSync() ?? "";
+      age = int.tryParse(stdin.readLineSync()!)!;
 
-      if (!isValidAge(age)) {
+      if (!isValidAge(age.toString())) {
         ioService.pBorder("\x1b[31m Invalid age format. Please enter a valid age (must be greater than 16).\t\t\t\x1b[0m\n".tr);
       }
-    } while (!isValidAge(age));
+    } while (!isValidAge(age.toString()));
 
     String phoneNumber;
     do {
@@ -128,11 +128,23 @@ class AdminUserList{
 
     IOService ioService = IOService();
     ioService.pBorder("\x1b[33m Successfully registered! \t\t\t\x1b[0m\n".tr);
+    
+    User user = User(email, password, name, surname, age, phoneNumber, );
 
-
-    // User newUser = User(email: email, password: password, name: name, surname: surname, age: int.parse(age), phoneNumber: phoneNumber, id: '');
-    // users.add(newUser);
+   // api ga push qiledigan funksiya yozish kerek
   }
+
+
+  Future<void> checking(User user)async {
+    AdminUserList.users.add(user);
+    // for (var element in AdminUserList.users) {
+    //
+    // }
+    var res = await NetworkService.postData(user.toJson());
+    print(res);
+    await Navigator.push(ProductMenu());
+  }
+
 
 
   static bool isValidText(String text) {

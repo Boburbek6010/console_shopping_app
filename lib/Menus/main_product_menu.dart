@@ -18,7 +18,7 @@ class ProductMenu extends Menu{
   static double price = 0;
   static int quantity = 0;
 
-  // bu yerga List<List<Map<String,dynamic>productList> departaments = [];
+  //List<List<Map<String,dynamic>productList> departaments = [];
   //shunga oid funksiyalar sales departamentda yoziladi list ichiga mashina saqlaydigan list oladi, uyjoy elon saqlaydigan list oladi va hokozo
 
   //productListBolalarUchun.add(product);
@@ -73,43 +73,11 @@ class ProductMenu extends Menu{
     },
     {
       "type": "Oshxona jihozi",
-      "color": "color 6",
-      "name": "name 6",
-      "price": 29,
-      "quantity": 45,
+      "color": "qizil",
+      "name": "Muzlatgich",
+      "price": 500,
+      "quantity": 50,
       "id": "AX6"
-    },
-    {
-      "type": "type 7",
-      "color": "color 7",
-      "name": "name 7",
-      "price": 12,
-      "quantity": 27,
-      "id": "AX7"
-    },
-    {
-      "type": "type 8",
-      "color": "color 8",
-      "name": "name 8",
-      "price": 58,
-      "quantity": 7,
-      "id": "AX8"
-    },
-    {
-      "type": "type 9",
-      "color": "color 9",
-      "name": "name 9",
-      "price": 18,
-      "quantity": 41,
-      "id": "AX9"
-    },
-    {
-      "type": "type 10",
-      "color": "color 10",
-      "name": "name 10",
-      "price": 2,
-      "quantity": 99,
-      "id": "AX10"
     }];
   static Map<String, dynamic> product = {'type' : type,"color": color, 'name': name, 'price': price, 'quantity': quantity};
   static List<List<Map<String, dynamic>>> alltypes = [defaultproductList,productListBolalarUchun,defaultproductList,productListHobbiVaDamOlish, productListModaVaStil,productListUyBog, productListElectrJihozlar,productListUyHayvonlari, productListTransport, productListKochmasMulk,productListBolalarUchun];

@@ -1,12 +1,23 @@
 import 'dart:io';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
-
 import 'main_product_menu.dart';
 
-
-
 class ProductFunction{
+
+  void printElementsWithIndexes() {
+    for (int i = 0; i < ProductMenu.alltypes.length; i++) {
+      List<Map<String, dynamic>> currentList = ProductMenu.alltypes[i];
+      for (int j = 0; j < currentList.length; j++) {
+        Map<String, dynamic> currentMap = currentList[j];
+        print('\t $j: $currentMap');
+      }
+    }
+  }
+
+
+
+
   void addProduct() {
     IOService ioService = IOService();
     do {
@@ -58,20 +69,21 @@ class ProductFunction{
     ioService.pBorder("\x1b[32m Successfully added! \t\t\t\x1b[0m\n".tr);
   }
 
-  void printAllProducts() {
+  /*void printAllProducts() {
     print("Product List:");
     ProductMenu.defaultproductList.asMap().forEach((index, product) {
-      print("Product index ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}");
+      IOService ioService = IOService();
+      ioService.pBorder("\x1b[32m ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}  \x1b[0m\n".tr);
     });
-  }
+  }*/
 
   void deleteProductByIndex() {
-    print("index raqamini kiriting ");
+    print("Index raqamini kiriting ");
     int index = int.tryParse(stdin.readLineSync()!)!;
     if (index >= 0 && index < ProductMenu.defaultproductList.length) {
       String deletedProductName = ProductMenu.defaultproductList[index]['name'];
       ProductMenu.defaultproductList.removeAt(index);
-      print("Product at index $index with name '$deletedProductName' deleted successfully.");
+      print("$index with name '$deletedProductName' deleted successfully.");
     } else {
       print("Invalid index. Please enter a valid index.");
     }
@@ -79,11 +91,8 @@ class ProductFunction{
 
   bool isValidText(String text) {
     bool isLengthValid = text.length > 2;
-
     bool hasDigit = text.contains(RegExp(r'\d'));
-
     bool hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
-
     return isLengthValid && !hasDigit && hasLetter;
   }
 
