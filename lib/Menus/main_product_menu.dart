@@ -80,7 +80,7 @@ class ProductMenu extends Menu{
       "id": "AX6"
     }];
   static Map<String, dynamic> product = {'type' : type,"color": color, 'name': name, 'price': price, 'quantity': quantity};
-  static List<List<Map<String, dynamic>>> alltypes = [defaultproductList,productListBolalarUchun,defaultproductList,productListHobbiVaDamOlish, productListModaVaStil,productListUyBog, productListElectrJihozlar,productListUyHayvonlari, productListTransport, productListKochmasMulk,productListBolalarUchun];
+  static List<List<Map<String, dynamic>>> alltypes = [defaultproductList,productListBolalarUchun,productListHobbiVaDamOlish, productListModaVaStil,productListUyBog, productListElectrJihozlar,productListUyHayvonlari, productListTransport, productListKochmasMulk,productListBolalarUchun];
 
 
 

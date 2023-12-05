@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
+import 'package:console_shopping_app/Services/register_user.dart';
 import '../Menus/main_product_menu.dart';
 import '../Models/admin.dart';
 import '../Models/user.dart';
@@ -13,7 +14,7 @@ class AdminUserList{
   static List<User> users =[User("Ali@gmail.com", "Zasqw234", "Alikhan", "Alikhojayev", 45, "998887744", /*"d"*/)];
 
 
-  static void deleteUser() {
+ /* static void deleteUser() {
     IOService ioService = IOService();
     if (users.isEmpty) {
       ioService.pBorder("\x1b[31m There are no registered users to delete.\t\t\t\x1b[0m\n".tr);
@@ -52,8 +53,8 @@ class AdminUserList{
       ioService.pBorder("\x1b[33m User index ${index + 1} => Email: ${user.email}, Password: ${user.password}\x1b[0m\n".tr);
     });
   }
-
-  static void addUser() {
+*/
+ /* static void addUser() {
        String name;
     do {
       IOService ioService = IOService();
@@ -132,7 +133,136 @@ class AdminUserList{
     User user = User(email, password, name, surname, age, phoneNumber, );
 
    // api ga push qiledigan funksiya yozish kerek
+  }*/
+
+  static void deleteUser() {
+    IOService ioService = IOService();
+    if (AdminUserList.users.isEmpty) {
+      ioService.pBorder("\x1b[31m There are no registered users to delete.\t\t\t\x1b[0m\n");
+      return;
+    }
+
+    printAllUserIndexed(); // Adminlarni ko'rsatish uchun
+
+    int selectedIndex;
+    do {
+      ioService.pBorderstdout("\x1b[33m Enter the index of the user to delete (0 to cancel): \t\t\x1b[0m");
+      String input = stdin.readLineSync() ?? "";
+
+      if (input.toLowerCase() == '0') {
+        return; // Funksiyani bekor qilish
+      }
+      selectedIndex = int.tryParse(input) ?? -1;
+
+      if (selectedIndex < 1 || selectedIndex > AdminUserList.users.length) {
+        ioService.pBorder("\x1b[31m Invalid index. Please enter a valid index or '0' to cancel.\t\t\t\x1b[0m\n");
+      }
+    } while (selectedIndex < 1 || selectedIndex > AdminUserList.users.length);
+
+    // Tanlangan userni o'chirish
+    AdminUserList.users.removeAt(selectedIndex - 1);
+
+    ioService.pBorder("\x1b[33m User successfully deleted! \t\t\t\x1b[0m\n");
   }
+
+  static void printAllUserIndexed() {
+    IOService ioService = IOService();
+    print("");
+    ioService.pBorder("\x1b[33m Registered Users :  \t\t\t\x1b[0m\n");
+    AdminUserList.users.asMap().forEach((index, user) {
+      print("");
+      ioService.pBorder("\x1b[33m User index ${index + 1} => Email: ${user.email}, Password: ${user.password}\x1b[0m\n");
+    });
+  }
+
+  static void addUser()async {
+      String name;
+      do {
+        IOService ioService = IOService();
+        ioService.pBorderstdout("\x1b[33m\t Enter your name: \t\t\x1b[0m".tr);
+        name = stdin.readLineSync() ?? "";
+
+        if (!isValidName(name)) {
+          ioService.pBorder("\x1b[31m Invalid name format. Please enter a valid name.\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidName(name));
+
+      String surname;
+      do {
+        IOService ioService = IOService();
+        ioService.pBorderstdout("\x1b[33m\t Enter your surname: \t\t\x1b[0m".tr);
+        surname = stdin.readLineSync() ?? "";
+
+        if (!isValidSurname(surname)) {
+          ioService.pBorder("\x1b[31m Invalid surname format. Please enter a valid surname.\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidSurname(surname));
+
+      String email;
+      do {
+        IOService ioService = IOService();
+        ioService.pBorderstdout("\x1b[33m\t Enter your email: \t\t\x1b[0m".tr);
+        email = stdin.readLineSync() ?? "";
+
+        if (!isValidEmail(email)) {
+          ioService.pBorder("\x1b[31m Invalid email format. Please enter a valid email address.\t\t\t\x1b[0m\n".tr);
+        } else if (users.any((user) => user.email == email)) {
+          ioService.pBorder("\x1b[31m Email is already registered. Please use a different email.\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidEmail(email) || users.any((user) => user.email == email));
+
+      String password;
+      do {
+        IOService ioService = IOService();
+
+        ioService.pBorderstdout("\x1b[33m\t Enter your password: \t\t\x1b[0m".tr);
+        password = stdin.readLineSync() ?? "";
+
+        if (!isValidPassword(password)) {
+          ioService.pBorder("\x1b[31m Invalid password format. Please make sure it meets the requirements.\t\t\t\x1b[0m\n".tr);
+        } else if (users.any((user) => user.password == password)) {
+          ioService.pBorder("\x1b[31m Password is already registered. Please use a different password.\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidPassword(password) || users.any((user) => user.password == password));
+
+      int age;
+      do {
+        IOService ioService = IOService();
+        ioService.pBorderstdout("\x1b[33m\t Enter your age: \t\t\x1b[0m".tr);
+        age = int.tryParse(stdin.readLineSync()!)!;
+
+        if (!isValidAge(age.toString())) {
+          ioService.pBorder("\x1b[31m Invalid age format. Please enter a valid age (must be greater than 16).\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidAge(age.toString()));
+
+      String phoneNumber;
+      do {
+        IOService ioService = IOService();
+        ioService.pBorderstdout("\x1b[33m\t Enter your phone number: \t\t\x1b[0m".tr);
+        phoneNumber = stdin.readLineSync() ?? "";
+
+        if (!isValidPhoneNumber(phoneNumber)) {
+          ioService.pBorder("\x1b[31m Invalid phone number format. Please enter a valid 9-digit number.\t\t\t\x1b[0m\n".tr);
+        }
+      } while (!isValidPhoneNumber(phoneNumber));
+
+
+      print("sdffdsdfgfdefg");
+      RegisterUser registerUser = RegisterUser();
+      User newUser = User(email, password, name, surname, age, phoneNumber, );
+      await checkingPost(newUser);
+      await NetworkService.postData(newUser.toJson());
+      IOService ioService = IOService();
+      ioService.pBorder("\x1b[33m Successfully registered! \t\t\t\x1b[0m\n".tr);
+
+
+
+    }
+
+
+
+
 
 
   Future<void> checking(User user)async {

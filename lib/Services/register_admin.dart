@@ -8,10 +8,9 @@ import 'network_service.dart';
 
 class RegisterAdmin {
   Admin admin = Admin(password: " ", login: " ");
-  static List<Admin> admins = [Admin(login: "zafarbek@gmail.com", password: "zafarbek7008k")];
+  static List<Admin> admins = [Admin(login: "admin", password: "password")];
 
-  /// When new user use our shop app. The one have to enter with sign up.
-  void signUp() async {
+ /* void signUp() async {
     String login;
     do {
       stdout.write("Enter your email: ");
@@ -43,8 +42,8 @@ class RegisterAdmin {
     await NetworkService.postData(newAdmin.toJson());
 
   }
-
-  /// Checking valid email. A valid mail should meet the following requirements;
+*/
+ /* /// Checking valid email. A valid mail should meet the following requirements;
   bool isValidEmail(String email) {
     RegExp emailRegExp = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegExp.hasMatch(email);
@@ -63,6 +62,7 @@ class RegisterAdmin {
   }
 
   /// When old user use our shop app. The one have to enter with sign in.
+*/
 
   void signIn() {
   do {
@@ -85,10 +85,6 @@ class RegisterAdmin {
     }
   } while (admin.login.isNotEmpty); // Tsiklni davom ettirish shart
 }
-
-
-
-
 
 
 }

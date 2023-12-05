@@ -13,13 +13,20 @@ class ProductFunction{
         print('\t $j: $currentMap');
       }
     }
+
   }
-
-
-
 
   void addProduct() {
     IOService ioService = IOService();
+    do {
+      stdout.write(" ");
+      ioService.pBorderstdout("\x1b[32m Enter type : \x1b[0m\n".tr);
+      ProductMenu.type = stdin.readLineSync() ?? "";
+      if (!isValidText(ProductMenu.type)) {
+        ioService.pBorder("\x1b[31m Invalid type format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
+      }
+    } while (!isValidText(ProductMenu.type));
+
     do {
       //stdout.write(" ");
       ioService.pBorderstdout("\x1b[32m Enter name : \x1b[0m\n".tr);
@@ -31,30 +38,12 @@ class ProductFunction{
 
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m Enter type : \x1b[0m\n".tr);
-      ProductMenu.type = stdin.readLineSync() ?? "";
-      if (!isValidText(ProductMenu.type)) {
-        ioService.pBorder("\x1b[31m Invalid type format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
-      }
-    } while (!isValidText(ProductMenu.type));
-
-    do {
-      stdout.write(" ");
       ioService.pBorderstdout("\x1b[32m Enter color : \x1b[0m\n".tr);
       ProductMenu.color = stdin.readLineSync() ?? "";
       if (!isValidText(ProductMenu.color)) {
         ioService.pBorder("\x1b[31m Invalid color format. Please enter a valid name. \t\t\t\x1b[0m\n".tr);
       }
     } while (!isValidText(ProductMenu.color));
-
-    do {
-      stdout.write("Enter price: ");
-      String priceInput = stdin.readLineSync() ?? "";
-      ProductMenu.price = double.tryParse(priceInput) ?? 0;
-      if (ProductMenu.price <= 0) {
-        ioService.pBorder("\x1b[31m Invalid price. Please enter a valid price.\t\t\t\x1b[0m\n".tr);
-      }
-    } while (ProductMenu.price <= 0);
 
     do {
       ioService.pBorderstdout("\x1b[32m Enter quantity:  \x1b[0m\n".tr);
@@ -65,17 +54,18 @@ class ProductFunction{
       }
     } while (ProductMenu.quantity <= 0);
 
+    do {
+      stdout.write("Enter price: ");
+      String priceInput = stdin.readLineSync() ?? "";
+      ProductMenu.price = double.tryParse(priceInput) ?? 0;
+      if (ProductMenu.price <= 0) {
+        ioService.pBorder("\x1b[31m Invalid price. Please enter a valid price.\t\t\t\x1b[0m\n".tr);
+      }
+    } while (ProductMenu.price <= 0);
+
     ProductMenu.defaultproductList.add(ProductMenu.product);
     ioService.pBorder("\x1b[32m Successfully added! \t\t\t\x1b[0m\n".tr);
   }
-
-  /*void printAllProducts() {
-    print("Product List:");
-    ProductMenu.defaultproductList.asMap().forEach((index, product) {
-      IOService ioService = IOService();
-      ioService.pBorder("\x1b[32m ${index + 1} => Name: ${product['name']}, Price: ${product['price']}, Quantity: ${product['quantity']}  \x1b[0m\n".tr);
-    });
-  }*/
 
   void deleteProductByIndex() {
     print("Index raqamini kiriting ");

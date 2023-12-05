@@ -4,6 +4,9 @@ import 'package:console_shopping_app/Menus/product_function.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
+import 'package:console_shopping_app/Services/register_admin.dart';
+import 'package:console_shopping_app/Services/register_user.dart';
+import '../Services/add_api.dart';
 import '../Services/admin_user_list.dart';
 import 'main_menu.dart';
 
@@ -17,17 +20,19 @@ class AdminSystem extends Menu{
     switch(press){
       case "1":{
         //printAllAdminsIndexed();
+        //apii dan post qilib olish
         AdminUserList.printAllUserIndexed();
         build();
       }
       break;
       case "2":{
+        //apii dan udalit qilib tashlash
         AdminUserList.deleteUser();
        build();
       }
       break;
       case "3":{
-        AdminUserList.addUser();
+     await Navigator.push(PostApi());
         build();
       }
       break;
