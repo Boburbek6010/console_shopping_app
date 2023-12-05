@@ -11,7 +11,6 @@ import 'package:console_shopping_app/my_app.dart';
 Future<void> main() async {
   IOService ioService = IOService();
   {
-
     ioService.pBorder("\x1b[32m \t\t\t   Xush kelibsiz     \t\t\t\x1b[0m".tr);
     ioService.pBorder("\x1b[32m \t\t\t Добро пожаловать    \t\t\t\x1b[0m".tr);
     ioService.pBorder("\x1b[32m \t\t\t    Welcome          \t\t\t\x1b[0m".tr);
@@ -20,15 +19,7 @@ Future<void> main() async {
     IOService.write("\x1b[33m    2. РУ  \t\x1b[0m");
     IOService.write("\x1b[36m    3. EN  \t\x1b[0m");
     print("\n");
-    IOService.write1("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
-
-
-
-
-
-    // String lang = stdin.readLineSync()!;
-    //
-    // LanguageService.switchLanguage(lang);
+    IOService.write1("\x1b[32m  Choose =>  \t\x1b[0m".tr);
 
     MyApp(
       home: HomeMenu(),

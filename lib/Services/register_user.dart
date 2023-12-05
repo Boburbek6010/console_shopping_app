@@ -120,7 +120,8 @@ class RegisterUser extends Menu{
 
     //print('User JSON: ${user.toJson()}');
     print("Successfully registered!");
-    await checking(user);
+    await checkingPost(user);
+
   }
 
 
@@ -203,20 +204,32 @@ class RegisterUser extends Menu{
 
 }
 
+// admin systemga qoshiladigan funksiyalarni shu yerdan ishlataman yani mock apidagi userlarni print delet qilish uchun
 
 
-
-Future<void> checking(User user)async {
+Future<void> checkingPost(User user)async {
   AdminUserList.users.add(user);
-  for (var element in AdminUserList.users) {
-
-  }
+  // for (var element in AdminUserList.users) {
+  //
+  // }
   var res = await NetworkService.postData(user.toJson());
   print(res);
   await Navigator.push(ProductMenu());
 }
 
+Future<void> checkingGet(User user)async {
+  AdminUserList.users.add(user);
+  var need  = await NetworkService.getData(NetworkService.apiUser);
+  print(need);
+  await Navigator.push(ProductMenu());
+}
 
+Future<void> checkingDelete(User user)async {
+  AdminUserList.users.add(user);
+  var need1 = await NetworkService.deleteData("2");
+  print(need1);
+  await Navigator.push(ProductMenu());
+}
 
 
 

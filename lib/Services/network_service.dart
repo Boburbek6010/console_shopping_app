@@ -14,7 +14,7 @@ class NetworkService {
 
   static Map<String, String> headers = {"Content-Type": "application/json"};
 
-  static Future<String> getUserData(String api)async{
+  static Future<String> getData(String api)async{
     Uri url = Uri.https(baseUrl, api);
     Response response = await get(url);
     if(response.statusCode ==200 || response.statusCode ==201){
@@ -41,7 +41,7 @@ class NetworkService {
 
 
 
-  static Future<String> deleteUserData(String id)async{
+  static Future<String> deleteData(String id)async{
     Uri url = Uri.https(baseUrl, "$apiDeleteUser/$id");
     Response response = await delete(url, headers: headers);
     if(response.statusCode ==200 || response.statusCode ==201){
