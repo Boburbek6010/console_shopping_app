@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/home_menu.dart';
+import 'package:console_shopping_app/Menus/language_menu.dart';
 import 'package:console_shopping_app/Menus/setting_menu.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/language_service.dart';
+import 'package:console_shopping_app/Services/navigation_service.dart';
 import 'package:console_shopping_app/my_app.dart';
 
 
@@ -23,11 +25,7 @@ Future<void> main() async {
     IOService.write1("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
 
 
-
-
-
     String lang = stdin.readLineSync()!;
-
     LanguageService.switchLanguage(lang);
 
     MyApp(

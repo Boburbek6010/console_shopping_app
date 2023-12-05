@@ -37,8 +37,8 @@ class HomeMenu extends Menu{
 
     // print("\t\t\t ${""}".tr);
     ioService.pBorder("\x1b[32m \t 1. ${"Administrator".tr}   \t\t\t\x1b[0m");
-    ioService.pBorder("\x1b[32m \t 2. ${"User".tr}            \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t 3. ${"Setting".tr}         \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t 2. ${"user".tr}            \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t 3. ${"setting".tr}         \t\t\t\x1b[0m".tr);
     ioService.pBorder("\x1b[31m \t 4. ${"Exit".tr}            \t\t\t\x1b[0m".tr);
 
 

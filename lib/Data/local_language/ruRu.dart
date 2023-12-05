@@ -4,6 +4,8 @@ const Map<String, String> ru = {
   "sign_up":"Pегистрация",
   "sign_in":"Вход",
   "exit":"Выход",
+  "Administrator" : "Администратор",
+  "user" : "Пользователь",
   "setting" :"настройки",
   "language_choice":"Введите свой выбор: ",
   "exit_text":"Благодарим вас за использование нашего приложения...",

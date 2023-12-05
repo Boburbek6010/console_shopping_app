@@ -4,6 +4,8 @@ const Map<String, String> uz = {
   "sign_up":"Ro'yxatdan o'tish",
   "sign_in":"Kirish",
   "exit":"Chiqish",
+  "Administrator" : "Administrator",
+  "user" : "Foydalanuvchi",
   "setting" :"Sozlamalar",
   "language_choice":"Tanlovingizni kiriting: ",
   "exit_text":"Ilovamizdan foydalanganingiz uchun rahmat...",
