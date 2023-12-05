@@ -26,9 +26,9 @@ Future<void> main() async {
 
 
 
-    String lang = stdin.readLineSync()!;
-
-    LanguageService.switchLanguage(lang);
+    // String lang = stdin.readLineSync()!;
+    //
+    // LanguageService.switchLanguage(lang);
 
     MyApp(
       home: HomeMenu(),

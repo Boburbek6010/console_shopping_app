@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'language_service.dart';
+
 class IOService{
 
   static void write<T>(T str){
@@ -18,6 +20,15 @@ class IOService{
         print("You can choose only  1 || 2 || 3 ||");
       }
     } while (num <= 0 || num > 3);
+
+    if(num == 1){
+      LanguageService.setLanguage = Language.uz;
+    }else if(num == 2){
+      LanguageService.setLanguage = Language.ru;
+    }else{
+      LanguageService.setLanguage = Language.en;
+    }
+
   }
   Future<void> selectWhoAreU() async {
     String press = IOService.read();

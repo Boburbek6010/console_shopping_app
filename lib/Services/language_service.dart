@@ -13,9 +13,9 @@ class LanguageService{
 
   static void switchLanguage(String lang){
     switch(lang){
-      case "I":{_language = Language.uz;} break;
-      case "II":{_language = Language.ru;} break;
-      case "III":{_language = Language.en;} break;
+      case "1":{LanguageService.setLanguage = Language.uz;} break;
+      case "2":{LanguageService.setLanguage = Language.ru;} break;
+      case "3":{LanguageService.setLanguage = Language.en;} break;
     }
 
   }
