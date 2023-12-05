@@ -35,7 +35,6 @@ Future<void> main() async {
       lang: Language.uz,
       routes: {
         HomeMenu.id:HomeMenu(),
-
         SettingMenu.id:SettingMenu()
       },
     );

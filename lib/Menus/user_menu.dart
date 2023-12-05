@@ -13,13 +13,11 @@ class UserMenu extends Menu{
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
-        RegisterUser registerUser = RegisterUser();
-        registerUser.signUp();
+        await Navigator.push(RegisterUser());
       }
       break;
       case "2":{
-        RegisterUser registerUser = RegisterUser();
-        registerUser.signIn();
+        await Navigator.push(RegisterUser());
       }
       break;
       case "3":{
@@ -36,7 +34,6 @@ class UserMenu extends Menu{
     print("2. ${"sign_in".tr}");
     print("3. ${"setting".tr}");
     String press = stdin.readLineSync() ?? "";
-
     await selectMenu(press);
   }
 

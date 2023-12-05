@@ -2,18 +2,55 @@ import 'dart:io';
 
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
 import 'package:console_shopping_app/Services/admin_user_list.dart';
+import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
+import '../Menus/main_menu.dart';
+import '../Menus/setting_menu.dart';
 import 'network_service.dart';
 import 'package:console_shopping_app/Models/user.dart';
 
-class RegisterUser {
-  // static List<User> users = [];
+class RegisterUser extends Menu{
+  static const id = "/register_menu";
+
+  Future<void> selectMenu(String press) async{
+    switch(press){
+      case "1": await signUp();
+      break;
+      case "2": await signIn();
+      break;
+      case "3":{
+        await Navigator.push(SettingMenu());
+      }
+      default: build();
+    }
+  }
+
+
+  @override
+  Future<void> build()async{
+    print("1. ${"Sign UP".tr}");
+    print("2. ${"Sign IN".tr}");
+    print("3. ${"setting".tr}");
+    String press = stdin.readLineSync() ?? "";
+    await selectMenu(press);
+  }
 
 
   /// When new user use our shop app. The one have to enter with sign up.
-  void  signUp() async {
+  Future<void>  signUp() async {
 
-    String? email;
+    User user = User(email: "email", password: "password", name: "name", surname: "surname", age: 23, phoneNumber: "phoneNumber", id: 'wwwww');
+
+    //print('User JSON: ${user.toJson()}');
+
+    print("Successfully registered!");
+
+    await checking(user);
+
+    print("Successfully posted");
+
+
+    String email;
     do {
       stdout.write("Enter your email: ");
       email = stdin.readLineSync() ?? "";
@@ -88,15 +125,6 @@ class RegisterUser {
         print("Invalid phone number format. You can enter only 9 digits.");
       }
     } while (!isValidPhoneNumber(phoneNumber));
-    User user = User(email: email, password: password, name: name, surname: surname, age: age, phoneNumber: phoneNumber);
-
-    //print('User JSON: ${user.toJson()}');
-
-    print("Successfully registered!");
-
-    AdminUserList.users.add(user);
-   // await Navigator.push(ProductMenu());
-    await NetworkService.postData(user.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
 
   }
 
@@ -144,7 +172,7 @@ class RegisterUser {
 
 
   /// When old user use our shop app. The one have to enter with sign in.
-  void signIn() async{
+  Future<void> signIn() async{
 
     String email;
     do {
@@ -182,6 +210,16 @@ class RegisterUser {
 
 
 
+
+Future<void> checking(User user)async {
+  AdminUserList.users.add(user);
+  for (var element in AdminUserList.users) {
+    print(element.age);
+  }
+  var res = await NetworkService.postData(user.toJson());
+  print(res);
+  await Navigator.push(ProductMenu());
+}
 
 
 

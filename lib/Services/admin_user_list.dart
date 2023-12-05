@@ -130,7 +130,7 @@ class AdminUserList{
     ioService.pBorder("\x1b[33m Successfully registered! \t\t\t\x1b[0m\n".tr);
 
 
-    User newUser = User(email: email, password: password, name: name, surname: surname, age: int.parse(age), phoneNumber: phoneNumber);
+    User newUser = User(email: email, password: password, name: name, surname: surname, age: int.parse(age), phoneNumber: phoneNumber, id: '');
     users.add(newUser);
   }
 

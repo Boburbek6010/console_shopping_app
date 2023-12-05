@@ -40,7 +40,7 @@ class RegisterAdmin {
     Admin newAdmin = Admin(login: login, password: password);
     admins.add(newAdmin);
     Navigator.push(AdminSystem());
-    await NetworkService.postData(newAdmin.toJson(), NetworkService.baseUrl, NetworkService.apiUser);
+    await NetworkService.postData(newAdmin.toJson());
 
   }
 

@@ -12,7 +12,7 @@ class NetworkService {
 
 
 
-  static Map<String, String> headers = {"Content-Type": 'application/json'};
+  static Map<String, String> headers = {"Content-Type": "application/json"};
 
   static Future<String> getUserData(String api)async{
     Uri url = Uri.https(baseUrl, api);
@@ -24,13 +24,17 @@ class NetworkService {
     }
   }
 
-  static Future<String> postData(Map<String, dynamic> body, String baseUrl, String api) async {
-    Uri url = Uri.https(baseUrl, api);
+  static Future<String>postData(Map<String, dynamic> body)async{
+    Uri url = Uri.https(baseUrl, apiUser);
+    print("object1");
     Response response = await post(url, body: jsonEncode(body), headers: headers);
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return "${"successfully_posted".tr} ${response.body}";
-    } else {
-      return "${"smth_went_wrong".tr} ${response.statusCode}";
+    print("object2");
+    if(response.statusCode == 200 || response.statusCode == 201){
+      print("object3");
+      return "Successfully posted: ${response.body}";
+    }else{
+      print("object4");
+      return "Something went wrong at ${response.statusCode}";
     }
   }
 
