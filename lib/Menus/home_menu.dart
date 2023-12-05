@@ -6,6 +6,7 @@ import 'package:console_shopping_app/Menus/user_menu.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
+import '../Services/register_user.dart';
 import 'main_menu.dart';
 
 class HomeMenu extends Menu{
@@ -19,7 +20,7 @@ class HomeMenu extends Menu{
       }
       break;
       case "2":{
-        await Navigator.push(UserMenu());
+        await Navigator.push(RegisterUser());
       }
       break;
       case "3":{

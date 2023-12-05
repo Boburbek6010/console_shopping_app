@@ -13,15 +13,15 @@ class User {
   late  String phoneNumber;
   late  String id;
 
-  User({
-    required this.email,
-    required this.password,
-    required this.name,
-    required this.surname,
-    required this.age,
-    required this.phoneNumber,
-    required this.id,
-  });
+  User(
+    this.email,
+     this.password,
+     this.name,
+     this.surname,
+     this.age,
+     this.phoneNumber,
+     this.id,
+  );
 
   User.fromJson(Map<String, dynamic> json){
     email = json["email"];

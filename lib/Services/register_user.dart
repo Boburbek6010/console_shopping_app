@@ -28,8 +28,8 @@ class RegisterUser extends Menu{
 
   @override
   Future<void> build()async{
-    print("1. ${"Sign UP".tr}");
-    print("2. ${"Sign IN".tr}");
+    print("1. ${"sign_up".tr}");
+    print("2. ${"sign_in".tr}");
     print("3. ${"setting".tr}");
     String press = stdin.readLineSync() ?? "";
     await selectMenu(press);
@@ -38,17 +38,6 @@ class RegisterUser extends Menu{
 
   /// When new user use our shop app. The one have to enter with sign up.
   Future<void>  signUp() async {
-
-    User user = User(email: "email", password: "password", name: "name", surname: "surname", age: 23, phoneNumber: "phoneNumber", id: 'wwwww');
-
-    //print('User JSON: ${user.toJson()}');
-
-    print("Successfully registered!");
-
-    await checking(user);
-
-    print("Successfully posted");
-
 
     String email;
     do {
@@ -126,6 +115,12 @@ class RegisterUser extends Menu{
       }
     } while (!isValidPhoneNumber(phoneNumber));
 
+    User user = User(email, password, name, surname, age, phoneNumber, id);
+
+
+    //print('User JSON: ${user.toJson()}');
+    print("Successfully registered!");
+    await checking(user);
   }
 
 
@@ -214,7 +209,7 @@ class RegisterUser extends Menu{
 Future<void> checking(User user)async {
   AdminUserList.users.add(user);
   for (var element in AdminUserList.users) {
-    print(element.age);
+
   }
   var res = await NetworkService.postData(user.toJson());
   print(res);
