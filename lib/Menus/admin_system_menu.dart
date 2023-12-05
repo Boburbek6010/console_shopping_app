@@ -1,19 +1,15 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/home_menu.dart';
-import 'package:console_shopping_app/Menus/setting_menu.dart';
+import 'package:console_shopping_app/Menus/product_function.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
-
-import '../Models/admin.dart';
 import '../Services/admin_user_list.dart';
-
 import 'main_menu.dart';
-import 'main_product_menu.dart';
 
 class AdminSystem extends Menu{
   IOService ioService = IOService();
-  ProductMenu productMenu = ProductMenu();
+  ProductFunction productFunction = ProductFunction();
   static const id = "/product_menu";
 
 
@@ -36,17 +32,17 @@ class AdminSystem extends Menu{
       }
       break;
       case "4":{
-        productMenu.printAllProducts();
+        productFunction.printAllProducts();
        build();
       }
       break;
       case "5":{
-        productMenu.deleteProductByIndex();
+        productFunction.deleteProductByIndex();
         build();
       }
       break;
       case "6":{
-        productMenu.addProduct();
+        productFunction.addProduct();
         build();
       }
       break;

@@ -37,18 +37,32 @@ class Departaments extends Menu{
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m \t\t\t 1. Trnasport         \t\t\t\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 2. Ko'chmas Mulk         \t\t\t\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Bolalar uchun")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Kochmas Mulk")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("Transport")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("Uy hayvonlari")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 5. ${IOService.txtBlock("Uy va bog' uchun mahsulotlar")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("Elektr jihozlari")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 7. ${IOService.txtBlock("Moda va Still")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 8. ${IOService.txtBlock("Xobbi, dam olish va Sport")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[31m \t\t\t 9. Exit   \x1b[0m".tr);
     print(" ");
-    ioService.pBorder("\x1b[31m \t\t\t 3. Exit   \x1b[0m".tr);
-
-    String press = stdin.readLineSync() ?? "";
-
+    String press ="";
+    do{
+      IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+      press = stdin.readLineSync()!;
+      if(press != "1" && press != "2"){
+        print("\n");
+        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
+      } else {
+        break;
+      }
+    }while(true);
     await selectMenu(press);
   }
 
-  void productTransport(){
 
-  }
+
 
 }
+

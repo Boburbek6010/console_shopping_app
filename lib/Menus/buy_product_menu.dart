@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:console_shopping_app/Menus/main_product_menu.dart';
+import 'package:console_shopping_app/Menus/product_function.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'main_menu.dart';
@@ -13,8 +13,8 @@ class BuyProductMenu extends Menu{
   Future<void> selectMenu(String press) async{
     switch(press){
       case "1":{
-        ProductMenu productMenu = ProductMenu();
-        productMenu.printAllProducts();
+        ProductFunction productFunction = ProductFunction();
+        productFunction.printAllProducts();
         build();
       }
       break;
