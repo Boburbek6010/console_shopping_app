@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:console_shopping_app/Menus/admin_menu.dart';
 import 'package:console_shopping_app/Menus/setting_menu.dart';
-import 'package:console_shopping_app/Menus/user_menu.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';

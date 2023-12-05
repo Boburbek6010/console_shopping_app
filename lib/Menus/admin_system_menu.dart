@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:console_shopping_app/Menus/home_menu.dart';
 import 'package:console_shopping_app/Menus/product_function.dart';
+import 'package:console_shopping_app/Menus/adding_product_with_section.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
@@ -37,7 +38,7 @@ class AdminSystem extends Menu{
       }
       break;
       case "4":{
-        productFunction.printElementsWithIndexes();
+        ProductFunction.printElementsWithIndexes();
        build();
       }
       break;
@@ -47,8 +48,7 @@ class AdminSystem extends Menu{
       }
       break;
       case "6":{
-        productFunction.addProduct();
-        build();
+        Navigator.push(Departaments());
       }
       break;
       case "7":{

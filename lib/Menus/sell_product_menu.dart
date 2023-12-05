@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:console_shopping_app/Menus/sales_departments.dart';
+import 'package:console_shopping_app/Menus/adding_product_with_section.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
 import 'home_menu.dart';

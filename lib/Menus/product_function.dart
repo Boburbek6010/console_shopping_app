@@ -5,7 +5,7 @@ import 'main_product_menu.dart';
 
 class ProductFunction{
 
-  void printElementsWithIndexes() {
+ static void printElementsWithIndexes() {
     for (int i = 0; i < ProductMenu.alltypes.length; i++) {
       List<Map<String, dynamic>> currentList = ProductMenu.alltypes[i];
       for (int j = 0; j < currentList.length; j++) {

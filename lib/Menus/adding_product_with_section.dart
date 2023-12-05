@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:console_shopping_app/Menus/setting_menu.dart';
+import 'package:console_shopping_app/Menus/home_menu.dart';
+import 'package:console_shopping_app/Menus/product_function.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
-import 'home_menu.dart';
-import 'language_menu.dart';
+import 'admin_system_menu.dart';
 import 'main_menu.dart';
 import 'main_product_menu.dart';
 
@@ -57,10 +57,15 @@ class Departaments extends Menu{
       }
       break;
       case "9":{
-      Navigator.push(HomeMenu());
+        ProductFunction.printElementsWithIndexes();
+        build();
       }
       break;
       case "10":{
+        Navigator.push(HomeMenu());
+      }
+      break;
+      case "11":{
         exit(0);
       }
       default: build();
@@ -78,14 +83,15 @@ class Departaments extends Menu{
     ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("Elektr jihozlari")}\x1b[0m".tr);
     ioService.pBorder("\x1b[32m 7. ${IOService.txtBlock("Moda va Still")}\x1b[0m".tr);
     ioService.pBorder("\x1b[32m 8. ${IOService.txtBlock("Xobbi, dam olish va Sport")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 9. Menu   \x1b[0m".tr);
-    ioService.pBorder("\x1b[31m \t\t\t 10. Exit   \x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Jami Elonlarni korish")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m \t\t\t 10. Menu   \x1b[0m".tr);
+    ioService.pBorder("\x1b[31m \t\t\t 11. Exit   \x1b[0m".tr);
     print(" ");
     String press ="";
     do{
       IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
       press = stdin.readLineSync()!;
-      if(press != "1" && press != "2"){
+      if(press != "1" && press != "2" && press != "3" && press != "4"&&press != "5" && press != "6" && press != "7" && press != "8" && press != "9" && press != "10"){
         print("\n");
         ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
       } else {
@@ -99,15 +105,15 @@ class Departaments extends Menu{
 
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -141,15 +147,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -160,21 +166,21 @@ class Departaments extends Menu{
   void uyJoy(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
     String manzil;
     do {
-      stdout.write("name kiriting: ");
+      stdout.write("manzil kiriting: ");
       manzil = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(manzil) && manzil.length > 3 && !hasSpecialCharacters(manzil)) {
@@ -182,7 +188,7 @@ class Departaments extends Menu{
         print("manzil qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("name qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("manzil qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -202,7 +208,7 @@ class Departaments extends Menu{
 
     double maydon;
     do {
-      stdout.write("Price kiriting: ");
+      stdout.write("maydon kiriting: ");
       maydon = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (maydon <= 0) {
@@ -235,15 +241,15 @@ class Departaments extends Menu{
   void transport(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -277,12 +283,12 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
         print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
@@ -296,15 +302,15 @@ class Departaments extends Menu{
   void hayvonlar(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -338,15 +344,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -357,15 +363,15 @@ class Departaments extends Menu{
   void xojalik(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -386,15 +392,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -405,15 +411,15 @@ class Departaments extends Menu{
   void electronika(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -447,15 +453,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -466,15 +472,15 @@ class Departaments extends Menu{
   void kiyim(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -508,15 +514,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -527,15 +533,15 @@ class Departaments extends Menu{
   void xobbi(){
     String type;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("type kiriting: ");
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        print("Matn qabul qilindi!");
+        print("type qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("type qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
@@ -556,15 +562,15 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("Matn kiriting: ");
+      stdout.write("color kiriting: ");
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
-        map['type'] = color;
-        print("Matn qabul qilindi!");
+        map['color'] = color;
+        print("color qabul qilindi!");
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        print("Matn qabul qilinmadi. Qaytadan urinib ko'ring.");
+        print("color qabul qilinmadi. Qaytadan urinib ko'ring.");
       }
     } while (true);
 
