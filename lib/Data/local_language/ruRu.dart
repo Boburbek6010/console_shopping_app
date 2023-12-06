@@ -37,6 +37,8 @@ const Map<String, String> ru = {
   "enter_color:" : "Введите цвет:",
   "enter_quantity:" : "Введите количество:",
   "enter_price:" : "Введите цену",
+  "Buy_products" : "Купить продукцию",
+  "Sell_products" : "Продавать продукцию",
   "enter_the_index_number" : "Введите индексный номер",
   "successfully_added!" : "успешно удалено",
   "with_name" : "с именем",

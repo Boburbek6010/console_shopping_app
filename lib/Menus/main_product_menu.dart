@@ -111,8 +111,8 @@ class ProductMenu extends Menu{
   @override
   Future<void> build()async{
     print("---------------------------------");
-    print("1. ${"Sell products".tr}");
-    print("2. ${"Buy products".tr}"); /// alltypes listdagi elementdan sotib olish logikasini qilish kerak
+    print("1. ${"Sell_products".tr}");
+    print("2. ${"Buy_products".tr}"); /// alltypes listdagi elementdan sotib olish logikasini qilish kerak
     // print("3. ${"Borrow product".tr}");
     // print("4. ${"return product".tr}");
     print("3. ${"Menu".tr}");

@@ -69,6 +69,8 @@ const Map<String, String> en = {
   "enter_surname":"Enter your surname: ",
   "enter_age":"Enter your age: ",
   "invalid_age":"Invalid age. Please enter a valid age.",
+  "Sell_products" : "Sell products",
+  "Buy_products" : "Buy products",
   "enter_phone":"Enter your phone number: +998",
   "invalid_phone":"Invalid phone number format. You can enter only 9 digits.",
   "successfully_registered":"Successfully registered!",

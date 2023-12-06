@@ -200,6 +200,8 @@ class RegisterUser extends Menu{
 
     isNewUserCreated = true;
 
+    await Navigator.push(ProductMenu());
+
     //navigator pushda productga emas yangi ochiladigan bolimlarga qo'shish kerak
 
   }

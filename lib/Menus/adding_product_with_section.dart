@@ -105,7 +105,7 @@ class Departaments extends Menu{
 
     String type;
     do {
-      ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Enter type")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Turini kiriting")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -113,7 +113,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -121,11 +121,11 @@ class Departaments extends Menu{
 
     double price;
     do {
-       ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Price kiriting:")}\x1b[0m".tr);
+       ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Narxini kiriting:")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
-        ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -135,7 +135,7 @@ class Departaments extends Menu{
 
     String color;
     do {
-      ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Enter Color")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Rangini kiriting")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
@@ -143,7 +143,7 @@ class Departaments extends Menu{
     ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m 9. ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m 9. ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -154,7 +154,7 @@ class Departaments extends Menu{
   void uyJoy(){
     String type;
     do {
-      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Enter type")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Turini kiriting")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -162,7 +162,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -176,17 +176,17 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
     double price;
     do {
-      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Enter price")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Narxini kiriting")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
-        ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -200,7 +200,7 @@ class Departaments extends Menu{
       maydon = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (maydon <= 0) {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -219,7 +219,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m  ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -230,7 +230,7 @@ class Departaments extends Menu{
   void transport(){
     String type;
     do {
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("enter type ")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("turini kiriting ")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -238,13 +238,13 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m  ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m  ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
     String name;
     do {
-      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Enter name : ")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Nomini kiriting : ")}\x1b[0m".tr);
       name = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(name) && name.length > 3 && !hasSpecialCharacters(name)) {
@@ -259,11 +259,11 @@ class Departaments extends Menu{
 
     double price;
     do {
-      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Price kiriting:")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Narxini kiriting:")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -273,7 +273,7 @@ class Departaments extends Menu{
 
     String color;
     do {
-      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Enter Color")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rangini kiriting")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
@@ -281,7 +281,7 @@ class Departaments extends Menu{
         ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -292,7 +292,7 @@ class Departaments extends Menu{
   void hayvonlar(){
     String type;
     do {
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Enter type")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Turini kiriting")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -300,7 +300,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -314,7 +314,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -324,7 +324,7 @@ class Departaments extends Menu{
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -334,8 +334,7 @@ class Departaments extends Menu{
 
     String color;
     do {
-      stdout.write("color kiriting: ");
-      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Enter color")}\x1b[0m".tr);
+      ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rangini kiriting")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
@@ -343,7 +342,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -354,7 +353,7 @@ class Departaments extends Menu{
   void xojalik(){
     String type;
     do {
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("enter type")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Turini kiriting")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -362,18 +361,18 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re Enter ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting ")}\x1b[0m".tr);
       }
     } while (true);
 
 
     double price;
     do {
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Price kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Narxini kiriting:")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, Re enter  ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, Qaytadan kiriting  ")}\x1b[0m".tr);
         continue; // Qiymat noto'g'ri bo'lsa tsiklni qayta boshlaymiz
       }
 
@@ -402,7 +401,7 @@ class Departaments extends Menu{
   void electronika(){
     String type;
     do {
-      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Enter type :")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Turini kiriting :")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
@@ -410,7 +409,7 @@ class Departaments extends Menu{
         ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Malumot qabul qilindi")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, re enter")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Malumot qabul qilinmadi, qaytadan kiriting")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -426,14 +425,14 @@ class Departaments extends Menu{
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
         print("");
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("name qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("ism qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
       }
     } while (true);
 
     double price;
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Price kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m 9. ${IOService.txtBlock("Narxini kiriting:")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
@@ -449,16 +448,16 @@ class Departaments extends Menu{
     String color;
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("color kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Rangini kiriting:")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
         map['color'] = color;
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("color qabul qilindi!")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rang qabul qilindi!")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
         print("");
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("color qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Rang qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -470,17 +469,17 @@ class Departaments extends Menu{
     String type;
     do {
 
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("typeni kiriting")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Turini kiriting")}\x1b[0m".tr);
       type = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
         print("");
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("type qabul qilindi!")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Turi qabul qilindi!")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
         print("");
-        ioService.pBorder("\x1b[31m  ${IOService.txtBlock("type qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m  ${IOService.txtBlock("Turi qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -504,7 +503,7 @@ class Departaments extends Menu{
     double price;
     do {
       stdout.write("");
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Price kiriting: ")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Narxini kiriting: ")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
@@ -520,16 +519,16 @@ class Departaments extends Menu{
     String color;
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m  ${IOService.txtBlock("color kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m  ${IOService.txtBlock("Rangini kiriting:")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
         map['color'] = color;
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("color qabul qilindi!")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rangi qabul qilindi!")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
         print("");
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("color qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("Rangi qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
       }
     } while (true);
 
@@ -546,10 +545,10 @@ class Departaments extends Menu{
 
       if (!isContainsDigit(type) && type.length > 3 && !hasSpecialCharacters(type)) {
         map['type'] = type;
-        ioService.pBorder("\x1b[32m  ${IOService.txtBlock("type qabul qilindi!")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m  ${IOService.txtBlock("turi qabul qilindi!")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[31m ${IOService.txtBlock("type qabul qilinmadi. Qaytadan urinib ko'ring")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m ${IOService.txtBlock("turi qabul qilinmadi. Qaytadan urinib ko'ring")}\x1b[0m".tr);
 
       }
     } while (true);
@@ -558,7 +557,7 @@ class Departaments extends Menu{
     double price;
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m${IOService.txtBlock("Price kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m${IOService.txtBlock("Narxini kiriting:")}\x1b[0m".tr);
       price = double.tryParse(stdin.readLineSync()!) ?? 0;
 
       if (price <= 0) {
@@ -573,16 +572,16 @@ class Departaments extends Menu{
     String color;
     do {
       stdout.write(" ");
-      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("color kiriting:")}\x1b[0m".tr);
+      ioService.pBorderstdout("\x1b[32m ${IOService.txtBlock("Rangini kiriting:")}\x1b[0m".tr);
       color = stdin.readLineSync() ?? "";
 
       if (!isContainsDigit(color) && color.length > 3 && !hasSpecialCharacters(color)) {
         map['color'] = color;
         print("");
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("color qabul qilindi!")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rangi qabul qilindi!")}\x1b[0m".tr);
         break; // Shartlar barchasi to'g'ri bo'lganida tsiklni to'xtatamiz
       } else {
-        ioService.pBorder("\x1b[32m ${IOService.txtBlock("color qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[32m ${IOService.txtBlock("Rangi qabul qilinmadi. Qaytadan urinib ko'ring.")}\x1b[0m".tr);
       }
     } while (true);
 
