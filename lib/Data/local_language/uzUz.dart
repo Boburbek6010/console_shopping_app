@@ -68,11 +68,22 @@ const Map<String, String> uz = {
   "enter_surname":"Familiyangizni kiriting: ",
   "enter_age":"Yoshingizni kiriting: ",
   "invalid_age":"Noto'g'ri yosh. Yaroqli yoshni kiriting",
-  "enter_phone":"Telefon raqamingizni kiriting: ",
+  "enter_phone":"Telefon raqamingizni kiriting: +998",
+  "invalid_phone":"Telefon raqami formati noto‘g‘ri. Siz faqat 9 ta raqamni kiritishingiz mumkin.",
   "successfully_registered":"Muvaffaqiyatli ro'yxatdan o'tdi!",
   "welcome":"Xush kelibsiz ",
   "Change_lang":"Til o'zgartirish ",
   "Home_menu":"Bosh Menu",
   "Exit":"Chiqish",
-
+  "select":"Tanlang => ",
+  "hang_on":"""
+         Kutib turing, elektron pochta manzili qanday bo'lishi kerakligini bilasizmi?
+         Agar yo'q bo'lsa, Google-ga kiring!!!
+        """,
+  "invalid_surname":"Familiya formati noto‘g‘ri. Familiyaning birinchi harfi bosh harf bilan yozilishi kerak.",
+  "too_young":"Siz juda yoshsiz. Siz 16 yosh yoki undan katta bo'lishingiz kerak.",
+  "should_be_registered":""""
+        Avvalo, ro'yxatdan o'tishingiz kerak!
+        """"",
+  "user404":"Foydalanuvchi topilmadi. Iltimos, avval ro'yxatdan o'ting!",
 };

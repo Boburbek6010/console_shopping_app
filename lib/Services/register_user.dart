@@ -42,11 +42,11 @@ class RegisterUser extends Menu{
     String press ="";
     do{
       IOService ioService =IOService();
-      IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+      IOService.write("\x1b[32m  ${"select".tr}  \t\x1b[0m".tr);
       press = stdin.readLineSync()!;
       if(press != "1" && press != "2" && press != "3"){
         print("\n");
-        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock(" Xato kiritdingiz ")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("you_entered_an_error".tr)}\x1b[0m".tr);
       } else {
         break;
       }
@@ -82,77 +82,68 @@ class RegisterUser extends Menu{
 
     String email;
     do {
-      stdout.write("Enter your email: ");
+      stdout.write("email_enter".tr);
       email = stdin.readLineSync() ?? "";
 
       if (!isValidEmail(email)) {
-        print("Invalid email format. Please enter a valid email address.");
-        print("""
-         Hang on, do you know that how should be email address?
-         If no, google it !!!
-        """);
+        print("email_invalid".tr);
+        print("hang_on".tr);
       } else if (AdminUserList.users.any((user) => user.email == email)) {
-        print("Email is already registered. Please use a different email.");
+        print("already_have_email".tr);
       }
     } while (!isValidEmail(email) || AdminUserList.users.any((user) => user.email == email));
 
     String password;
     do {
-      print("""
-      Password requirements:
-      - Have more than 8 characters.
-      - Contains a capital letter.
-      - Contains a lowercase letter.
-      - Contains a number.
-    """);
-      stdout.write("Enter your password: ");
+      print("check_password".tr);
+      stdout.write("enter_password".tr);
       password = stdin.readLineSync() ?? "";
 
       if (!isValidPassword(password)) {
-        print("Invalid password format. Please make sure it meets the requirements.");
+        print("password_invalid".tr);
       }
     } while (!isValidPassword(password));
 
     String name;
     do {
-      stdout.write("Enter your name: ");
+      stdout.write("enter_name".tr);
       name = stdin.readLineSync() ?? "";
 
       if (!isValidName(name)) {
-        print("Invalid name format. First letter of name should be capital letter.");
+        print("invalid_name".tr);
       }
     } while (!isValidName(name));
 
     String surname;
     do {
-      stdout.write("Enter your surname: ");
+      stdout.write("enter_surname".tr);
       surname = stdin.readLineSync() ?? "";
 
       if (!isValidSurname(surname)) {
-        print("Invalid surname format. First letter of surname should be capital letter.");
+        print("invalid_surname".tr);
       }
     } while (!isValidSurname(surname));
 
     int age;
     do {
-      stdout.write("Enter your age: ");
+      stdout.write("enter_age".tr);
       String ageInput = stdin.readLineSync() ?? "";
       age = int.tryParse(ageInput) ?? 0;
 
       if (age <= 0) {
-        print("Invalid age. Please enter a valid age.");
+        print("invalid_age".tr);
       } else if (age < 16) {
-        print("You are too young. You must be 16 or older.");
+        print("too_young".tr);
       }
     } while (age <= 0 || age < 16);
 
     String phoneNumber;
     do {
-      stdout.write("Enter your phone number: +998");
+      stdout.write("enter_phone".tr);
       phoneNumber = stdin.readLineSync() ?? "";
 
       if (!isValidPhoneNumber(phoneNumber)) {
-        print("Invalid phone number format. You can enter only 9 digits.");
+        print("invalid_phone".tr);
       }
     } while (!isValidPhoneNumber(phoneNumber));
 
@@ -161,7 +152,7 @@ class RegisterUser extends Menu{
 
 
     //print('User JSON: ${user.toJson()}');
-    print("Successfully registered!");
+    print("successfully_registered".tr);
     await checkingPost(user);
 
   }
@@ -171,24 +162,22 @@ class RegisterUser extends Menu{
 
     String email;
     do {
-      stdout.write("Enter your email: ");
+      stdout.write("email_enter".tr);
       email = stdin.readLineSync() ?? "";
 
       if (!isValidEmail(email)) {
-        print("Invalid email format. Please enter a valid email address.");
-        print("""
-        First of all, you should be register!
-        """);
+        print("email_invalid".tr);
+        print("should_be_registered".tr);
       }
     }while (!isValidEmail(email));
 
     String password;
     do {
-      stdout.write("Enter your password: ");
+      stdout.write("enter_password".tr);
       password = stdin.readLineSync() ?? "";
 
       if (!isValidPassword(password)) {
-        print("Invalid password format.");
+        print("password_invalid".tr);
       }
     } while (!isValidPassword(password));
 
@@ -202,9 +191,9 @@ class RegisterUser extends Menu{
     }
 
     if (user != null) {
-      print("Welcome, ${user.name}!");
+      print(" ${"welcome".tr} ${user.name}!");
     } else {
-      print("User not found. Please register first!");
+      print("user404".tr);
       // Yangi foydalanuvchi qo'shish logikasi
       // Sizning ro'yxatdan o'tkazish funktsiyangizni chaqiring
     }

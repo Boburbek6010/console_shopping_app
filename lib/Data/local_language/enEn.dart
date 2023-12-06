@@ -69,11 +69,23 @@ const Map<String, String> en = {
   "enter_surname":"Enter your surname: ",
   "enter_age":"Enter your age: ",
   "invalid_age":"Invalid age. Please enter a valid age.",
-  "enter_phone":"Enter your phone number: ",
+  "enter_phone":"Enter your phone number: +998",
+  "invalid_phone":"Invalid phone number format. You can enter only 9 digits.",
   "successfully_registered":"Successfully registered!",
   "welcome":"Welcome ",
   "Change_lang":"Change language ",
   "Home_menu":"Home Menu",
   "Exit":"Exit",
+  "select":"Select => ",
+  "hang_on":"""
+         Hang on, do you know that how should be email address?
+         If no, google it !!!
+        """,
+  "invalid_surname":"Invalid surname format. First letter of surname should be capital letter.",
+  "too_young":"You are too young. You must be 16 or older.",
+  "should_be_registered":"""
+        First of all, you should be register!
+        """,
+  "user404":"User not found. Please register first!",
 
 };
