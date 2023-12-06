@@ -8,7 +8,7 @@ import 'network_service.dart';
 
 class RegisterAdmin {
   Admin admin = Admin(password: " ", login: " ");
-  static List<Admin> admins = [Admin(login: "admin", password: "password")];
+  static List<Admin> admins = [Admin(login: "admin@gmail.com", password: "password")];
 
  /* void signUp() async {
     String login;
