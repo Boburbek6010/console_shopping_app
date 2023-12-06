@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:console_shopping_app/Menus/admin_menu.dart';
 import 'package:console_shopping_app/Menus/main_product_menu.dart';
 import 'package:console_shopping_app/Services/admin_user_list.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
@@ -12,12 +13,17 @@ import 'package:console_shopping_app/Models/user.dart';
 
 class RegisterUser extends Menu{
   static const id = "/register_menu";
+  bool isNewUserCreated = false;
+  String prefer = "";
 
   Future<void> selectMenu(String press) async{
+    prefer = press;
     switch(press){
-      case "1": await signUp();
+      case "1": {
+        isNewUserCreated ? await Navigator.push(AdminMenu()) :await signUp();
+      }
       break;
-      case "2": await signIn();
+      case "2": isNewUserCreated ? await Navigator.push(AdminMenu()) :await signIn();
       break;
       case "3":{
         await Navigator.push(SettingMenu());
@@ -29,6 +35,7 @@ class RegisterUser extends Menu{
 
   @override
   Future<void> build()async{
+    print("object");
     print("1. ${"sign_up".tr}");
     print("2. ${"sign_in".tr}");
     print("3. ${"setting".tr}");
@@ -46,10 +53,31 @@ class RegisterUser extends Menu{
     }while(true);
     await selectMenu(press);
   }
+
+
+  // RegisterUser(){
+  //   build().then((value) async {
+  //     if(prefer == "1"){
+  //       await signUp();
+  //     }else if(prefer == "2"){
+  //       await signIn();
+  //     }
+  //   });
+  //
+  // }
+
+
+  Future<void> checkingPost(User user)async {
+    AdminUserList.users.add(user);
+    // for (var element in AdminUserList.users) {
+    //
+    // }
+    var res = await NetworkService.postData(user.toJson());
+    print(res);
+    isNewUserCreated = true;
+    await Navigator.push(ProductMenu());
   }
 
-
-  /// When new user use our shop app. The one have to enter with sign up.
   Future<void>  signUp() async {
 
     String email;
@@ -97,8 +125,8 @@ class RegisterUser extends Menu{
 
     String surname;
     do {
-    stdout.write("Enter your surname: ");
-     surname = stdin.readLineSync() ?? "";
+      stdout.write("Enter your surname: ");
+      surname = stdin.readLineSync() ?? "";
 
       if (!isValidSurname(surname)) {
         print("Invalid surname format. First letter of surname should be capital letter.");
@@ -120,8 +148,8 @@ class RegisterUser extends Menu{
 
     String phoneNumber;
     do {
-    stdout.write("Enter your phone number: +998");
-    phoneNumber = stdin.readLineSync() ?? "";
+      stdout.write("Enter your phone number: +998");
+      phoneNumber = stdin.readLineSync() ?? "";
 
       if (!isValidPhoneNumber(phoneNumber)) {
         print("Invalid phone number format. You can enter only 9 digits.");
@@ -137,6 +165,67 @@ class RegisterUser extends Menu{
     await checkingPost(user);
 
   }
+
+
+  Future<void> signIn() async{
+
+    String email;
+    do {
+      stdout.write("Enter your email: ");
+      email = stdin.readLineSync() ?? "";
+
+      if (!isValidEmail(email)) {
+        print("Invalid email format. Please enter a valid email address.");
+        print("""
+        First of all, you should be register!
+        """);
+      }
+    }while (!isValidEmail(email));
+
+    String password;
+    do {
+      stdout.write("Enter your password: ");
+      password = stdin.readLineSync() ?? "";
+
+      if (!isValidPassword(password)) {
+        print("Invalid password format.");
+      }
+    } while (!isValidPassword(password));
+
+    User? user;
+    try {
+      user = AdminUserList.users.firstWhere(
+            (user) => user.email == email && user.password == password,
+      );
+    } catch (e) {
+      user = null;
+    }
+
+    if (user != null) {
+      print("Welcome, ${user.name}!");
+    } else {
+      print("User not found. Please register first!");
+      // Yangi foydalanuvchi qo'shish logikasi
+      // Sizning ro'yxatdan o'tkazish funktsiyangizni chaqiring
+    }
+
+    isNewUserCreated = true;
+
+    //navigator pushda productga emas yangi ochiladigan bolimlarga qo'shish kerak
+
+  }
+
+
+
+
+
+  }
+
+
+
+
+  /// When new user use our shop app. The one have to enter with sign up.
+
 
 
   ///Checking vail email. A valid mail should meet the following requirements;
@@ -182,54 +271,14 @@ class RegisterUser extends Menu{
 
 
   /// When old user use our shop app. The one have to enter with sign in.
-  Future<void> signIn() async{
 
-    String email;
-    do {
-      stdout.write("Enter your email: ");
-      email = stdin.readLineSync() ?? "";
-
-      if (!isValidEmail(email)) {
-        print("Invalid email format. Please enter a valid email address.");
-        print("""
-        First of all, you should be register!
-        """);
-      }
-    }while (!isValidEmail(email));
-
-    String password;
-    do {
-      stdout.write("Enter your password: ");
-      password = stdin.readLineSync() ?? "";
-
-      if (!isValidPassword(password)) {
-        print("Invalid password format.");
-      }
-    } while (!isValidPassword(password));
-
-    User user = AdminUserList.users.firstWhere((user) => user.email == email && user.password == password);
-
-    print("Welcome, ${user.name}!");
-    await Navigator.push(ProductMenu());
-
-    //navigator pushda productga emas yangi ochiladigan bolimlarga qo'shish kerak
-
-  }
 
 
 
 // admin systemga qoshiladigan funksiyalarni shu yerdan ishlataman yani mock apidagi userlarni print delet qilish uchun
 
 
-Future<void> checkingPost(User user)async {
-  AdminUserList.users.add(user);
-  // for (var element in AdminUserList.users) {
-  //
-  // }
-  var res = await NetworkService.postData(user.toJson());
-  print(res);
-  await Navigator.push(ProductMenu());
-}
+
 
 Future<void> checkingGet(User user)async {
   AdminUserList.users.add(user);

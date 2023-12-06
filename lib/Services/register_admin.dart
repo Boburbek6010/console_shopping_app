@@ -64,7 +64,7 @@ class RegisterAdmin {
   /// When old user use our shop app. The one have to enter with sign in.
 */
 
-  void signIn() {
+  Future<void> signIn() async {
   do {
     stdout.write("Elektron pochta manzilingizni kiriting: ");
     String email = stdin.readLineSync() ?? "";
@@ -79,7 +79,7 @@ class RegisterAdmin {
 
     if (admin.login.isNotEmpty) {
       print("Xush kelibsiz, ${admin.login}!");
-      Navigator.push(AdminSystem());
+      await Navigator.push(AdminSystem());
     } else {
       print("Bunday email mavjud emas. Iltimos, qayta urinib ko'ring yoki ro'yxatdan o'ting.");
     }

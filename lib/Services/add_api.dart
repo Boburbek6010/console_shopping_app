@@ -4,6 +4,7 @@ import 'package:console_shopping_app/Services/admin_user_list.dart';
 import 'package:console_shopping_app/Services/extention_service.dart';
 import 'package:console_shopping_app/Services/io_service.dart';
 import 'package:console_shopping_app/Services/navigation_service.dart';
+import 'package:console_shopping_app/Services/register_user.dart';
 import '../Menus/admin_system_menu.dart';
 import '../Menus/main_menu.dart';
 import 'network_service.dart';
@@ -14,7 +15,9 @@ class PostApi extends Menu{
 
   Future<void> selectMenu(String press) async{
     switch(press){
-      case "1": await adding();
+      case "1": {
+        await Navigator.push(RegisterUser());
+      }
       break;
       case "2": await Navigator.push(HomeMenu());
       break;
@@ -51,89 +54,94 @@ class PostApi extends Menu{
 /// When new user use our shop app. The one have to enter with sign up.
 Future<void>  adding() async {
 
-  String email;
-  do {
-    stdout.write("Enter your email: ");
-    email = stdin.readLineSync() ?? "";
+  // String email;
+  // do {
+  //   stdout.write("Enter your email: ");
+  //   email = stdin.readLineSync() ?? "";
+  //
+  //   if (!isValidEmail(email)) {
+  //     print("Invalid email format. Please enter a valid email address.");
+  //     print("""
+  //        Hang on, do you know that how should be email address?
+  //        If no, google it !!!
+  //       """);
+  //   } else if (AdminUserList.users.any((user) => user.email == email)) {
+  //     print("Email is already registered. Please use a different email.");
+  //   }
+  // } while (!isValidEmail(email) || AdminUserList.users.any((user) => user.email == email));
+  //
+  // String password;
+  // do {
+  //   print("""
+  //     Password requirements:
+  //     - Have more than 8 characters.
+  //     - Contains a capital letter.
+  //     - Contains a lowercase letter.
+  //     - Contains a number.
+  //   """);
+  //   stdout.write("Enter your password: ");
+  //   password = stdin.readLineSync() ?? "";
+  //
+  //   if (!isValidPassword(password)) {
+  //     print("Invalid password format. Please make sure it meets the requirements.");
+  //   }
+  // } while (!isValidPassword(password));
+  //
+  // String name;
+  // do {
+  //   stdout.write("Enter your name: ");
+  //   name = stdin.readLineSync() ?? "";
+  //
+  //   if (!isValidName(name)) {
+  //     print("Invalid name format. First letter of name should be capital letter.");
+  //   }
+  // } while (!isValidName(name));
+  //
+  // String surname;
+  // do {
+  //   stdout.write("Enter your surname: ");
+  //   surname = stdin.readLineSync() ?? "";
+  //
+  //   if (!isValidSurname(surname)) {
+  //     print("Invalid surname format. First letter of surname should be capital letter.");
+  //   }
+  // } while (!isValidSurname(surname));
+  //
+  // int age;
+  // do {
+  //   stdout.write("Enter your age: ");
+  //   String ageInput = stdin.readLineSync() ?? "";
+  //   age = int.tryParse(ageInput) ?? 0;
+  //
+  //   if (age <= 0) {
+  //     print("Invalid age. Please enter a valid age.");
+  //   } else if (age < 16) {
+  //     print("You are too young. You must be 16 or older.");
+  //   }
+  // } while (age <= 0 || age < 16);
+  //
+  // String phoneNumber;
+  // do {
+  //   stdout.write("Enter your phone number: +998");
+  //   phoneNumber = stdin.readLineSync() ?? "";
+  //
+  //   if (!isValidPhoneNumber(phoneNumber)) {
+  //     print("Invalid phone number format. You can enter only 9 digits.");
+  //   }
+  // } while (!isValidPhoneNumber(phoneNumber));
+  //
+  // String id = '';
+  User user = User("email", "password", "name", "surname", 23, "phoneNumber", /*id*/);
 
-    if (!isValidEmail(email)) {
-      print("Invalid email format. Please enter a valid email address.");
-      print("""
-         Hang on, do you know that how should be email address?
-         If no, google it !!!
-        """);
-    } else if (AdminUserList.users.any((user) => user.email == email)) {
-      print("Email is already registered. Please use a different email.");
-    }
-  } while (!isValidEmail(email) || AdminUserList.users.any((user) => user.email == email));
-
-  String password;
-  do {
-    print("""
-      Password requirements:
-      - Have more than 8 characters.
-      - Contains a capital letter.
-      - Contains a lowercase letter.
-      - Contains a number.
-    """);
-    stdout.write("Enter your password: ");
-    password = stdin.readLineSync() ?? "";
-
-    if (!isValidPassword(password)) {
-      print("Invalid password format. Please make sure it meets the requirements.");
-    }
-  } while (!isValidPassword(password));
-
-  String name;
-  do {
-    stdout.write("Enter your name: ");
-    name = stdin.readLineSync() ?? "";
-
-    if (!isValidName(name)) {
-      print("Invalid name format. First letter of name should be capital letter.");
-    }
-  } while (!isValidName(name));
-
-  String surname;
-  do {
-    stdout.write("Enter your surname: ");
-    surname = stdin.readLineSync() ?? "";
-
-    if (!isValidSurname(surname)) {
-      print("Invalid surname format. First letter of surname should be capital letter.");
-    }
-  } while (!isValidSurname(surname));
-
-  int age;
-  do {
-    stdout.write("Enter your age: ");
-    String ageInput = stdin.readLineSync() ?? "";
-    age = int.tryParse(ageInput) ?? 0;
-
-    if (age <= 0) {
-      print("Invalid age. Please enter a valid age.");
-    } else if (age < 16) {
-      print("You are too young. You must be 16 or older.");
-    }
-  } while (age <= 0 || age < 16);
-
-  String phoneNumber;
-  do {
-    stdout.write("Enter your phone number: +998");
-    phoneNumber = stdin.readLineSync() ?? "";
-
-    if (!isValidPhoneNumber(phoneNumber)) {
-      print("Invalid phone number format. You can enter only 9 digits.");
-    }
-  } while (!isValidPhoneNumber(phoneNumber));
-
-  String id = '';
-  User newUser = User(email, password, name, surname, age, phoneNumber, /*id*/);
 
   //print('User JSON: ${user.toJson()}');
   print("Successfully registered!");
-  await checkingPost(newUser);
-  print("alfa1");
+  AdminUserList.users.add(user);
+  for (var element in AdminUserList.users) {
+    print(element.email);
+  }
+  var res = await NetworkService.postData(user.toJson());
+  print(res);
 
 }
 
@@ -173,13 +181,8 @@ bool isValidSurname(String name) {
 
 
   Future<void> checkingPost(User newUser)async {
-  AdminUserList.users.add(newUser);
-  // for (var element in AdminUserList.users) {
-  //
-  // }
-  var res = await NetworkService.postData(newUser.toJson());
-   print(res);
-  await Navigator.push(AdminSystem());
+
+
 }
 
 Future<void> checkingGet(User user)async {
