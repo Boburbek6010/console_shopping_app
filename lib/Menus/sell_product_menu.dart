@@ -29,7 +29,7 @@ class SellProductMenu extends Menu{
   @override
   Future<void> build()async{
     print("---------------------------------");//bu yerda bolishi kere boledigan narsala1
-    print("1. ${"Select section".tr}");
+    print("1. ${"select_section".tr}");
     print("2. ${"Menu".tr}");
     print("3. ${"Exit".tr}");
 

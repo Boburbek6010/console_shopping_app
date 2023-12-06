@@ -40,12 +40,12 @@ class BuyProductMenu extends Menu{
   @override
   Future<void> build()async{
     ioService.pBorder("\x1b[32m    ${IOService.txtBlock("--------------------------")}\x1b[0m");
-    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("All Product".tr)}\x1b[0m");
-    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Basket".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("all_product".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("basket".tr)}\x1b[0m");
     ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("Menu".tr)}\x1b[0m");
     ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("Exit".tr)}\x1b[0m");
     print(" ");
-    IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+    IOService.write("\x1b[32m  ${"choose =>".tr}  \t\x1b[0m".tr);
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);
@@ -65,14 +65,14 @@ class BuyProductMenu extends Menu{
     List shoppingBasket = [];
 
     do {
-      print("Mavjud maxsulotlar:");
+      print("available_products:".tr);
       ProductFunction.printElementsWithIndexes();
 
-      stdout.write("Tanlangan maxsulotni indeksini kiriting (yoki 'ok' deb yozing): ");
+      stdout.write("enter_the_index_of_the_selected_product_(or_type_'ok'): ".tr);
       String userInput = stdin.readLineSync() ?? "";
 
       if (userInput.toLowerCase() == 'ok') {
-        print("Savatchadagi maxsulotlar:");
+        print("products_in_the_basket:".tr);
         for (int i = 0; i < shoppingBasket.length; i++) {
           print(" $i: ${shoppingBasket[i]}");
         }
@@ -84,10 +84,10 @@ class BuyProductMenu extends Menu{
       if (selectedProductIndex >= 0 && selectedProductIndex < ProductMenu.alltypes.length) {
         var selectedProduct = ProductMenu.alltypes[selectedProductIndex];
         shoppingBasket.add(selectedProduct);
-        print("$selectedProduct savatchaga qo'shildi.");
+        print("$selectedProduct ${"added_to_basket".tr}");
         ProductMenu.alltypes.removeAt(selectedProductIndex);
       } else {
-        print("Noto'g'ri tanlov. Qaytadan urinib ko'ring.");
+        print("W_ch.P_t_a.".tr);
       }
     } while (true);
   }

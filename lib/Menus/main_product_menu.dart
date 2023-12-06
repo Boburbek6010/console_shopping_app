@@ -96,19 +96,11 @@ class ProductMenu extends Menu{
       }
       break;
       case "3":{
-       // await Navigator.push(SettingMenu());
+       await Navigator.push(HomeMenu());
       }
       break;
       case "4":{
-        //await Navigator.push(SettingMenu());
-      }
-      break;
-      case "5":{
-        //await Navigator.push(SettingMenu());
-      }
-      break;
-      case "6":{
-        //await Navigator.push(SettingMenu());
+        exit(0);
       }
       break;
       default: build();
@@ -121,10 +113,10 @@ class ProductMenu extends Menu{
     print("---------------------------------");
     print("1. ${"Sell products".tr}");
     print("2. ${"Buy products".tr}"); /// alltypes listdagi elementdan sotib olish logikasini qilish kerak
-    print("3. ${"Borrow product".tr}");
-    print("4. ${"return product".tr}");
-    print("5. ${"Menu".tr}");
-    print("6. ${"Exit".tr}");
+    // print("3. ${"Borrow product".tr}");
+    // print("4. ${"return product".tr}");
+    print("3. ${"Menu".tr}");
+    print("4. ${"Exit".tr}");
     String press = stdin.readLineSync() ?? "";
 
     await selectMenu(press);

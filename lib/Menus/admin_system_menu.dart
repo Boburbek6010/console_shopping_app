@@ -65,15 +65,15 @@ class AdminSystem extends Menu{
   Future<void> build()async{
     print(" ");
     ioService.pBorder("\x1b[32m    ${IOService.txtBlock("--------------------------")}\x1b[0m");
-    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Userlarni_korib_chiqish".tr)}\x1b[0m");   // language ishladi faqat shu qator uchun
-    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Userni o'chirish".tr)}\x1b[0m");
-    ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("Userni qo'shish".tr)}\x1b[0m");
-    ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("Maxsulotni ko'rib chiqish".tr)}\x1b[0m");
-    ioService.pBorder("\x1b[32m 5. ${IOService.txtBlock("Maxsulotni o'chirish".tr)}\x1b[0m");
-    ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("Mahsulot qo'shish".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Userlarni_korib_chiqish".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("delete_user".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("add_user".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("product_review".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 5. ${IOService.txtBlock("delete_product".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("add_product".tr)}\x1b[0m");
     ioService.pBorder("\x1b[32m 7. ${IOService.txtBlock("Menu".tr)}\x1b[0m");
     print(" ");
-    IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+    IOService.write("\x1b[32m  ${"choose =>".tr} \t\x1b[0m".tr);
 
     String press = stdin.readLineSync() ?? "";
 

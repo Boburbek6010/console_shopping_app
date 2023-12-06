@@ -75,25 +75,25 @@ class Departaments extends Menu{
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Bolalar uchun")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Kochmas Mulk")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("Transport")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("Uy hayvonlari")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 5. ${IOService.txtBlock("Uy va bog' uchun mahsulotlar")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("Elektr jihozlari")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 7. ${IOService.txtBlock("Moda va Still")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 8. ${IOService.txtBlock("Xobbi, dam olish va Sport")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("Jami Elonlarni korish")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m \t\t\t 10. Menu   \x1b[0m".tr);
-    ioService.pBorder("\x1b[31m \t\t\t 11. Exit   \x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("for_children".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("real_estate".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 3. ${IOService.txtBlock("transport".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 4. ${IOService.txtBlock("domestic_animals".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 5. ${IOService.txtBlock("products_for_home_and_garden".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 6. ${IOService.txtBlock("electrical_equipment".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 7. ${IOService.txtBlock("fashion_and_style".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 8. ${IOService.txtBlock("hobbies_recreation_and_sports".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 9. ${IOService.txtBlock("view_total_ads".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m \t\t\t 10. ${"Menu".tr}     \x1b[0m");
+    ioService.pBorder("\x1b[31m \t\t\t 11. ${"Exit".tr}   \x1b[0m");
     print(" ");
     String press ="";
     do{
-      IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+      IOService.write("\x1b[32m  ${"choose =>".tr}  \t\x1b[0m");
       press = stdin.readLineSync()!;
       if(press != "1" && press != "2" && press != "3" && press != "4"&&press != "5" && press != "6" && press != "7" && press != "8" && press != "9" && press != "10"){
         print("\n");
-        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("Xato kiritdingiz")}\x1b[0m".tr);
+        ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("you_entered_an_error".tr)}\x1b[0m");
       } else {
         break;
       }

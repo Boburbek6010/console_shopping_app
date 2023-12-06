@@ -31,16 +31,16 @@ class AdminMenu extends Menu{
 
   @override
   Future<void> build()async{
-    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Enter")}\x1b[0m".tr);
-    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Menu")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[32m 1. ${IOService.txtBlock("Enter".tr)}\x1b[0m");
+    ioService.pBorder("\x1b[32m 2. ${IOService.txtBlock("Menu".tr)}\x1b[0m");
 
     String press ="";
 do{
-  IOService.write("\x1b[32m  Tanlang =>  \t\x1b[0m".tr);
+  IOService.write("\x1b[32m  ${"choose =>".tr}  \t\x1b[0m");
   press = stdin.readLineSync()!;
   if(press != "1" && press != "2"){
     print("\n");
-    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock(" Xato kiritdingiz ")}\x1b[0m".tr);
+    ioService.pBorder("\x1b[31m \t\t\t${IOService.txtBlock("you_entered_an_error".tr)}\x1b[0m");
   } else {
    break;
   }
